@@ -56,6 +56,11 @@ un massimo di 30 caratteri.
   margin-left: 11em;
   min-width: 30rem;
   padding-bottom:6em; 
+  justify-content: center;
+}
+
+h2{
+    font-weight: bold;
 }
 
 span a{
