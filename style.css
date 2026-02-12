@@ -18,7 +18,7 @@ body { background-image: url('img/back2.jpg');
   min-height: 100vh; background-color: #8FBC8F; 
   font-family: Helvetica, Arial, Sans-Serif;  /* Usa un font "senza grazia" per il testo, con pi alternative, ipotizzando condizione normale sia schermo */
   /* Assicurarsi di usare sempre testo con font leggibili e in forte contrasto con lo sfondo*/
-  margin: 20px; /* Margine intorno al contenuto */
+  margin: 100px; /* Margine intorno al contenuto */
   font-size: 100%; 
   line-height: 110%; color: #228B22;}
 
@@ -70,7 +70,7 @@ span a{
 footer { 
   font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
 
-  height:8em;
+  /*height:8em;*/
   border-top: 0.3em solid black; /*specifico il bordo grigio spesso solo per il bordo superiore*/
   padding-top: 0.3em;   /*per evitare bordo e contenuto del footer si sovrappongano*/
   /*margin-bottom:1em;*/     /* per lasciare un po' di spazio dal bordo della finestra */
