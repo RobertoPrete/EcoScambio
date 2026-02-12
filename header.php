@@ -40,14 +40,14 @@ else
     <body>
         <!--Genera l'intestazione della pagina con il titolo del sito!-->
         <header>
-                <h1><img id="logo" src="img/logo1.jpg" alt="logo ECOnnectify"></h1>
-                <p class='slogan'>"Dallo scarto al valore: il futuro è sostenibile."</p>
                 <?php
                 //Mostra il nome dell'utente e il credito disponibile in alto a destra
                 echo "<div style='text-align:right; font-size:0.9em;'>Utente: $utente | Credito: € " . number_format($saldo, 2) . "</div>";
                 ?>
+                <h1><img id="logo" src="img/logo1.jpg" alt="logo ECOnnectify"></h1>
+                <p class='slogan'>"Dallo scarto al valore: il futuro è sostenibile."</p>             
         </header>
-        
+
         <!--Genera il menu di navigazione con i link alle pagine principali del sito!-->
         <nav>
             <h2><strong>Menù</strong></h2>            
