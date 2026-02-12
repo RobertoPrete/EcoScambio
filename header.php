@@ -50,7 +50,8 @@ else
 
         <!--Genera il menu di navigazione con i link alle pagine principali del sito!-->
         <nav>
-            <ul>
+            <h2>Menù<h2>            
+            <ul class='menu'> <!-- Inizio dell'elenco puntato per il menu di navigazione -->
                 <li><a href='home.php'>HOME</a> <!-- Link alla pagina principale --></li>
                 <li><a href='lista.php'>LISTA</a> <!-- Link alla pagina con la lista dei materiali --></li>
                 <li><a href='offerta.php'>OFFERTA</a> <!-- Link alla pagina per gestire le offerte --></li>
