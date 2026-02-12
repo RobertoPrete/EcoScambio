@@ -58,6 +58,11 @@ un massimo di 30 caratteri.
   padding-bottom:6em; 
 }
 
+span{
+  color: #228B22; /* Colore del testo */
+  text-decoration: none; /* Rimuove la sottolineatura */
+}
+
 footer { 
   font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
 
