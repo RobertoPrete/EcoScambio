@@ -42,15 +42,16 @@ else
         <header>
                 <h1><img id="logo" src="img/logo1.jpg" alt="logo ECOnnectify"></h1>
                 <p class='slogan'>"Dallo scarto al valore: il futuro è sostenibile."</p>
+                <?php
+                //Mostra il nome dell'utente e il credito disponibile in alto a destra
+                echo "<div style='text-align:right; font-size:0.9em;'>Utente: $utente | Credito: € " . number_format($saldo, 2) . "</div>";
+                ?>
         </header>
-        <?php
-            //Mostra il nome dell'utente e il credito disponibile in alto a destra
-            echo "<div style='text-align:right; font-size:0.9em;'>Utente: $utente | Credito: € " . number_format($saldo, 2) . "</div>";
-        ?>
+        
 
         <!--Genera il menu di navigazione con i link alle pagine principali del sito!-->
         <nav>
-            <h2>Menù<h2>            
+            <h2><strong>Menù</strong></h2>            
             <ul class='menu'> <!-- Inizio dell'elenco puntato per il menu di navigazione -->
                 <li><a href='home.php'>HOME</a> <!-- Link alla pagina principale --></li>
                 <li><a href='lista.php'>LISTA</a> <!-- Link alla pagina con la lista dei materiali --></li>
