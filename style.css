@@ -39,6 +39,7 @@ nav {
 }
 nav ul.menu li{
     padding-top: 5%;
+    font-weight: bold;
 }
 
 nav ul.menu a {

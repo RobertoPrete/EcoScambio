@@ -48,7 +48,6 @@ else
                 ?>
         </header>
         
-
         <!--Genera il menu di navigazione con i link alle pagine principali del sito!-->
         <nav>
             <h2><strong>Menù</strong></h2>            
