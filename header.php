@@ -34,7 +34,7 @@ else
   <meta name="description" content="Pagina di intestazione della piattaforma ECOnnectify"> <!-- Descrizione del sito -->
   <meta name="keywords" content="eco, economia circolare, sostenibilità, riuso, riciclo, aziende, artigiani"> <!-- Parole chiave -->
   <title>ECOnnectify</title> <!-- Titolo della pagina -->
-  <link rel="stylesheet" href="css/style.css"> <!-- Collegamento al file CSS -->
+  <link rel="stylesheet" href="style.css"> <!-- Collegamento al file CSS -->
   <!--<link rel="icon" type="image/jpeg" href="img/poli.jpeg">!--> <!-- Inserisce la favicon -->
 </head>
     <body>';
