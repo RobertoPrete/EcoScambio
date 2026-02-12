@@ -80,7 +80,7 @@ footer {
 /*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
 body {
     font-family: Arial, sans-serif;
-    margin: 10px;
+    margin: 20px;
     padding: 0;
     display: grid;
     grid-template-columns: 20% auto;
