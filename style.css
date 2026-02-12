@@ -62,9 +62,57 @@ footer {
   font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
 
   height:8em;
-  border-top: 0.3em solid gray; /*specifico il bordo grigio spesso solo per il bordo superiore*/
+  border-top: 0.3em solid black; /*specifico il bordo grigio spesso solo per il bordo superiore*/
   padding-top: 0.3em;   /*per evitare bordo e contenuto del footer si sovrappongano*/
   margin-bottom:1em;     /* per lasciare un po' di spazio dal bordo della finestra */
   min-width: 30rem;
   font-style: italic; /* Stile corsivo */
 } 
+
+/*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "header header"
+        "nav main"
+        "footer footer";
+}
+
+header {
+    grid-area: header;
+    padding: 1px;
+}
+
+nav {
+    grid-area: nav;
+    padding: 2em;
+}
+
+main {
+    grid-area: main;
+    padding: 2em;
+}
+
+footer {
+    grid-area: footer;
+    padding: 2em;
+}
+
+@media (max-width: 600px) {
+    body {
+        grid-template-columns: auto;
+        grid-template-areas: 
+            "header"
+            "nav"
+            "main"
+            "footer";
+    }
+    main{
+        margin-left: 0em;
+    }
+}
