@@ -1,5 +1,5 @@
 <?php
-include 'includes/header.php'; // Include l'intestazione della pagina, che contiene il titolo, i link CSS e il menu di navigazione
+include 'header.php'; // Include l'intestazione della pagina, che contiene il titolo, i link CSS e il menu di navigazione
 ?>
 <main>
   <!--il tag <strong> evidenzia in grassetto il testo-->
@@ -108,4 +108,4 @@ include 'includes/header.php'; // Include l'intestazione della pagina, che conti
   </div>
 </section>
 -->
-<?php include 'includes/footer.php'; ?>
+<?php include 'footer.php'; ?>
