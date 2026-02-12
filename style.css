@@ -1,0 +1,70 @@
+header {
+  text-align: center; /* Centra il contenuto dell'intestazione */
+  /*background-color: #708090; /* Colore di sfondo grigio ardesia */
+  /*color: white; /* Colore del testo bianco */
+  padding: 1px; /* Spaziatura interna */
+}
+header.slogan{
+  font-size: 1em;
+  color: #228B22;
+  margin-top: 2px;
+  text-align: center; /* Centra lo slogan */
+  font-style: italic;
+}
+body { background-image: url('img/back2.jpg');
+  background-size: cover;      /* Riempie tutto lo spazio */
+  background-position: center; /* Centra l'immagine */
+  background-repeat: no-repeat;
+  min-height: 100vh; background-color: #8FBC8F; 
+  font-family: Helvetica, Arial, Sans-Serif;  /* Usa un font "senza grazia" per il testo, con pi alternative, ipotizzando condizione normale sia schermo */
+  /* Assicurarsi di usare sempre testo con font leggibili e in forte contrasto con lo sfondo*/
+  font-size: 100%; 
+  line-height: 110%; color: #228B22;}
+
+#logo {
+    width: 50%;
+    height: auto;
+    max-width: 200px;
+    max-height: 180px; /* Limita la larghezza massima del logo */
+    display: block;
+    margin: 0 auto; /* Centra il logo orizzontalmente */
+}
+
+nav {
+  float:left;
+  padding: 2%;
+  /*border-top: 1%;*/
+  width: 10rem;
+/*menu di navigazione; con 'float: left' specifico che deve trovarsi sul lato sinistro*/
+}
+nav ul.menu li{
+    padding-top: 5%;
+}
+
+nav ul.menu a {
+  margin: 10px 10px; /* Spaziatura orizzontale tra i link */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  color: #228B22; /* Colore del testo */
+  padding-top: 5%;
+}
+
+main {
+/*contenuto della pagina, con min-width: 30 em specifico che pu� restringersi fino ad 
+un massimo di 30 caratteri.
+ NOTA: impostare a 30 caratteri il minimo per content, (che e' a fianco a navigation, che � largo necessariamente 10 caratteri) e contemporaneamente per header e footer, implica che necessariamente in finestre "piccole" (<40 caratteri) questi elementi saranno non bene allineati (ma poiche' la specifica dell'esercizio richiede cosi', necessario ottemperare */    
+  padding:2%;
+  margin-left: 11em;
+  min-width: 30rem;
+  padding-bottom:6em; 
+}
+
+footer { 
+  font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
+
+  height:8em;
+  border-top: 0.3em solid gray; /*specifico il bordo grigio spesso solo per il bordo superiore*/
+  padding-top: 0.3em;   /*per evitare bordo e contenuto del footer si sovrappongano*/
+  margin-bottom:1em;     /* per lasciare un po' di spazio dal bordo della finestra */
+  min-width: 30rem;
+  font-style: italic; /* Stile corsivo */
+} 

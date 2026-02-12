@@ -63,7 +63,7 @@ else
                         echo "<li><a href='logout.php'>LOGOUT</a></li>"; // mostro l'opzione per fare il logout sono se è stato fatto il login
                 ?>
             </ul>
-        </nav><hr> <!--Aggiunge una linea orizzontale sotto il menu di navigazione-->
+        </nav> <!--Aggiunge una linea orizzontale sotto il menu di navigazione-->
 
         <!--Commento per un link opzionale alla pagina "CONFERMA", da riattivare se necessario
         <a href='conferma.php'>CONFERMA</a> |  per lo spazio CONFERMA, se dovesse essere necessario riaggiungerlo -->

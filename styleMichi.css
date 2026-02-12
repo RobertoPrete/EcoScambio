@@ -1,0 +1,209 @@
+/* Stile generale per il corpo della pagina */
+body {
+  font-family: Arial, sans-serif; /* Imposta il font principale */
+  margin: 20px; /* Margine intorno al contenuto */
+  background-color: #F2F2F2; /* Colore di sfondo grigio chiaro */
+  color: black; /* Colore del testo */
+}
+
+/* Stile per l'intestazione della pagina */
+header {
+  text-align: center; /* Centra il contenuto dell'intestazione */
+  background-color: #708090; /* Colore di sfondo grigio ardesia */
+  color: white; /* Colore del testo bianco */
+  padding: 10px; /* Spaziatura interna */
+}
+
+header .slogan {
+  font-size: 1em;
+  color: #ccc;
+  margin-top: 5px;
+  text-align: center; /* Centra lo slogan */
+  font-style: italic;
+}
+
+/* Stile per i link nel menu di navigazione */
+nav a {
+  margin: 0 10px; /* Spaziatura orizzontale tra i link */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  color: black; /* Colore del testo */
+}
+
+/* Stile per i link nel menu di navigazione quando il cursore passa sopra */
+nav a:hover { 
+  color: #708090; /* Cambia il colore del testo a grigio ardesia */
+}
+
+/* Stile per il contenuto principale della pagina */
+main {
+  background-color: #E0E0E0; /* Colore di sfondo grigio medio chiaro */
+  padding: 20px; /* Spaziatura interna */
+  border: 1px solid #CCCCCC; /* Bordo grigio chiaro */
+}
+
+/* Stile per il footer */
+footer {
+  font-size: 0.8em; /* Riduce la dimensione del testo */
+  color: #666; /* Colore del testo grigio scuro */
+  margin-top: 20px; /* Spaziatura sopra il footer */
+}
+
+/* Stile per la sezione delle immagini cliccabili nella home.php */
+.material-links {
+  text-align: center; /* Centra il contenuto */
+  margin: 2em 0; /* Spaziatura verticale */
+}
+
+.material-links h2 {
+  font-size: 1.5em; /* Dimensione del titolo */
+  margin-bottom: 1em; /* Spaziatura sotto il titolo */
+}
+
+/* Stile per il contenitore delle immagini circolari */
+.circles {
+  display: flex; /* Layout flessibile */
+  justify-content: center; /* Centra gli elementi orizzontalmente */
+  gap: 2em; /* Spaziatura tra gli elementi */
+  flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
+}
+
+/* Stile per le immagini circolari */
+.circles img {
+  width: 120px; /* Larghezza dell'immagine */
+  height: 120px; /* Altezza dell'immagine */
+  object-fit: cover; /* Adatta l'immagine al contenitore */
+  border-radius: 50%; /* Rende l'immagine circolare */
+  border: 2px solid #ccc; /* Bordo grigio chiaro */
+  transition: transform 0.3s, border-color 0.3s; /* Aggiunge una transizione per l'effetto hover */
+}
+
+/* Effetto hover per le immagini circolari */
+.circles img:hover {
+  transform: scale(1.05); /* Ingrandisce leggermente l'immagine */
+  border-color: #999; /* Cambia il colore del bordo */
+}
+
+/* Stile per i contenitori dei materiali */
+.material {
+  display: flex; /* Layout flessibile */
+  flex-direction: column; /* Disposizione verticale degli elementi */
+  align-items: center; /* Centra gli elementi orizzontalmente */
+  max-width: 180px; /* Larghezza massima del contenitore */
+  margin-bottom: 1em; /* Spaziatura sotto ogni blocco */
+}
+
+/* Stile per i dettagli dei materiali */
+.material details {
+  margin-top: 0.5em; /* Spaziatura sopra i dettagli */
+  font-size: 0.9em; /* Dimensione del testo */
+  text-align: center; /* Centra il testo */
+  width: 100%; /* Larghezza completa */
+}
+
+/* Stile per il sommario dei dettagli */
+.material summary {
+  cursor: pointer; /* Cambia il cursore a "pointer" */
+  font-weight: bold; /* Testo in grassetto */
+  text-align: center; /* Centra il testo */
+}
+
+/* Stile per la sezione degli elementi chimici nella home.php */
+.chemical-materials {
+  text-align: center; /* Centra il contenuto */
+  margin: 2em 0; /* Spaziatura verticale */
+}
+
+.chemical-materials h2 {
+  font-size: 1.4em; /* Dimensione del titolo */
+  margin-bottom: 1em; /* Spaziatura sotto il titolo */
+}
+
+/* Stile per il contenitore degli elementi chimici */
+.elements {
+  display: flex; /* Layout flessibile */
+  justify-content: center; /* Centra gli elementi orizzontalmente */
+  gap: 1.5em; /* Spaziatura tra gli elementi */
+  flex-wrap: wrap; /* Permette agli elementi di andare a capo su schermi piccoli */
+}
+
+/* Stile per ogni elemento chimico */
+.element {
+  display: flex; /* Layout flessibile */
+  flex-direction: column; /* Disposizione verticale degli elementi */
+  align-items: center; /* Centra gli elementi orizzontalmente */
+}
+
+/* Stile per le immagini degli elementi chimici */
+.element img {
+  width: 80px; /* Larghezza dell'immagine */
+  height: 80px; /* Altezza dell'immagine */
+  object-fit: contain; /* Adatta l'immagine al contenitore */
+  margin-bottom: 0.5em; /* Spaziatura sotto l'immagine */
+}
+
+/* Stile per il testo degli elementi chimici */
+.element p {
+  margin: 0; /* Rimuove il margine */
+  font-weight: bold; /* Testo in grassetto */
+  font-size: 0.9em; /* Dimensione del testo */
+}
+
+/* Responsive design: regole per schermi piccoli (max-width: 600px)
+   Queste regole migliorano la leggibilità e l'usabilità su smartphone e dispositivi mobili */
+/* Responsive design: regole per schermi piccoli (max-width: 600px) */
+@media (max-width: 600px) {
+  main {
+      padding: 0.63em 4vw; 
+  }
+  header div {
+      position: static;
+      margin-top: 0.63em;
+      text-align: center;
+  }
+  nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5em; 
+      align-items: center;
+  }
+} /* Chiusura corretta del blocco @media (max-width: 600px) */
+
+/* Stile per la stampa */
+@media print {
+nav, footer, .circles, .chemical-materials, .material-links {
+    display: none;
+}
+main {
+    background-color: white;
+    color: black;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+body {
+    background-color: white;
+    color: black;
+}
+img {
+    display: none;
+}
+p {
+    font-size: 12pt;
+    line-height: 1.5;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+button, form {
+    display: none;
+}
+h1, h2, h3 {
+    color: black;
+    margin: 0.5em 0;
+}
+a:focus, button:focus, input:focus {
+  outline: 2px solid #FFD700;
+  outline-offset: 2px;
+}
+} /* Chiusura corretta del blocco @media print */
