@@ -17,10 +17,10 @@ include 'header.php'; // Include l'intestazione della pagina, che contiene il ti
   </p>-->
   <!--<h2>Connessione tra scarti e creatività</h2>-->
   <p class="introHome">Ogni anno, tonnellate di materiali tessili, caratacei, plastici o compositi vengono scartati dalle aziende di produzione e finiscono in una discarica, non perché siano inutilizzabili, ma perché non trovano la strada verso chi saprebbe dar loro nuova vita. Allo stesso tempo, migliaia di artigiani, designer e startup sostenibili lottano per accedere a materie prime a costi accessibili.</p>
-  <h2>Chi siamo e cosa facciamo</h2>
+  <h2><strong>Chi siamo e cosa facciamo</strong></h2>
   <p class="chiSiamo">ECOnnectify nasce proprio per colmare questo divario, creando un ponte tra chi ha materiali di scarto e chi è alla ricerca di risorse sostenibili per i propri progetti creativi. La nostra piattaforma è un luogo dove le aziende possono liberarsi in modo intelligente dei loro materiali inutilizzati, mentre artigiani, designer e creativi possono trovare tesori nascosti a prezzi accessibili.</p>
   <p class="chiSiamo"><span class="registratiAccedi"><a href="registrazione.php">Registrati</a></span> o <span class="registratiAccedi"><a href="login.php">accedi</a></span> per iniziare a scoprire offerte, pubblicare richieste e contribuire a un'economia più verde e collaborativa. Insieme, possiamo trasformare ciò che è "scarto" in nuova opportunità.</p>
-  <h2>Come funziona</h2>
+  <h2><strong>Come funziona</strong></h2>
   <p class="comeFunziona">
     <ol>
         <li><span class="registratiAccedi"><a href="registrazione.php">Registrati</a></span> come azienda o artigiano.

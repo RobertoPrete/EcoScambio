@@ -59,13 +59,10 @@ un massimo di 30 caratteri.
   justify-content: center;
 }
 
-h2{
-    font-weight: bold;
-}
-
 span a{
   color: #228B22; /* Colore del testo */
   text-decoration: none; /* Rimuove la sottolineatura */
+  font-weight: bold; /* Rende il testo in grassetto */
 }
 
 footer { 
