@@ -58,7 +58,7 @@ un massimo di 30 caratteri.
   padding-bottom:6em; 
 }
 
-span{
+span a{
   color: #228B22; /* Colore del testo */
   text-decoration: none; /* Rimuove la sottolineatura */
 }
