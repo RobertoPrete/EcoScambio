@@ -18,7 +18,6 @@ body { background-image: url('img/back2.jpg');
   min-height: 100vh; background-color: #8FBC8F; 
   font-family: Helvetica, Arial, Sans-Serif;  /* Usa un font "senza grazia" per il testo, con pi alternative, ipotizzando condizione normale sia schermo */
   /* Assicurarsi di usare sempre testo con font leggibili e in forte contrasto con lo sfondo*/
-  margin: 100px; /* Margine intorno al contenuto */
   font-size: 100%; 
   line-height: 110%; color: #228B22;}
 
@@ -81,7 +80,7 @@ footer {
 /*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: 10px;
     padding: 0;
     display: grid;
     grid-template-columns: 20% auto;
@@ -94,7 +93,6 @@ body {
 
 header {
     grid-area: header;
-    padding: 1px;
 }
 
 nav {
