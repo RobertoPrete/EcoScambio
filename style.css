@@ -95,8 +95,8 @@ div.campiRegistrazione{
   margin: 2px; /*  Spaziatura interna dei campi di input 
 } */
 input {
-  margin: 5px; /* Spaziatura interna dei campi di input */
-  padding: 5px; /* Spaziatura interna dei campi di input */
+  margin: 3px; /* Spaziatura interna dei campi di input */
+  padding: 3px; /* Spaziatura interna dei campi di input */
 }
 
 footer { 
