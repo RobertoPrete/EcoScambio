@@ -66,6 +66,9 @@ span a{
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
+
+
+/* Stile per i tag all'interno del main di registrazione.php */
 p.errori{
   color: red; /* Colore del testo rosso per gli errori */
   font-weight: bold; /* Rende il testo in grassetto */
@@ -76,6 +79,7 @@ p.successo{
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
+/* Stile per i campi del form diregistrazione.php */
 legend {
   background-color: white;
   padding: 2px 5px; 
@@ -91,13 +95,14 @@ div.campiRegistrazione input {
   margin: 2px; /*  Spaziatura interna dei campi di input */
 }
 
-footer { 
-  font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
 
-  /*height:8em;*/
+
+footer { 
+  font-family: "Times New Roman", Georgia, Serif; 
+  font-style: italic; 
+  font-size: 0.8em; 
   border-top: 0.3em solid black; /*specifico il bordo grigio spesso solo per il bordo superiore*/
   padding-top: 0.3em;   /*per evitare bordo e contenuto del footer si sovrappongano*/
-  /*margin-bottom:1em;*/     /* per lasciare un po' di spazio dal bordo della finestra */
   min-width: 30rem;
   font-style: italic; /* Stile corsivo */
 } 
@@ -135,6 +140,7 @@ footer {
     padding: 2em;
 }
 
+/* Regole per schermi con larghezza massima di 900px */
 @media (max-width: 900px) {
     body {
         grid-template-columns: auto;
