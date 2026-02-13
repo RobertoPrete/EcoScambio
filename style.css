@@ -76,16 +76,17 @@ p.successo{
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
+legend {
+  background-color: white;
+  padding: 2px 5px; 
+}
+
 div.campiRegistrazione{
   display: none; /* Nasconde i campi di registrazione specifici per azienda e artigiano */
 }
 
-div.campiRegistrazione label {
-  padding:5px; /* Spaziatura interna delle etichette */
-}
-
 div.campiRegistrazione input {
-  padding: 5px; /* Spaziatura interna dei campi di input */
+  margin: 2px; /*  Spaziatura interna dei campi di input */
 }
 
 footer { 
