@@ -92,13 +92,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 ?>
 <main>
-    <h2>Login</h2>
+    <h2>Pagina di accesso</h2>
 
     <!-- Mostra un messaggio di errore, se presente -->
     <?php if ($error) echo "<p class='errori'>$error</p>"; ?>
 
     <!-- Form di login -->
     <form method="post" id="login">
+        <fieldset>
+        <legend>Login</legend>
         <label for="user">Username:</label>
         <!-- Campo per l'username, precompilato se salvato nei cookie -->
         <input type="text" id="user" name="user" value="<?= htmlspecialchars($rememberedUser) ?>"><br>
@@ -116,6 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- Pulsanti per inviare o resettare il modulo -->
         <input type="submit" id="bottoneInvia" value="INVIA" >
         <input type="reset" id="bottoneCancella" value="CANCELLA" >
+        <fieldset>
     </form>
 </main>
 
