@@ -135,7 +135,7 @@ nav {
 
 main {
     grid-area: main;
-    padding: 2em;
+    /*padding: 2em;*/
 }
 
 footer {
