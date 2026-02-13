@@ -108,45 +108,46 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php if ($success) echo "<p class='successo'>$success</p>"; ?>
 
     <!-- Form di registrazione -->
-    <form method="post">
-        <fieldset>
-            <legend>Seleziona utente</legend>
-            <label><input type="radio" name="type" value="azienda" required> Azienda</label>
-            <label><input type="radio" name="type" value="artigiano"> Artigiano</label>
-        </fieldset><br>
+    <form name="form_registrazione" id="form_registrazione" method="post">
+        <fieldset> 
+            <legend>Utente</legend>
+            <label for="type">Seleziona tipo di utente</label>
+            <select name="type" id="type" required>
+                <option value="" disabled selected>-- Seleziona --</option>
+                <option value="azienda">Azienda</option>
+                <option value="artigiano">Artigiano</option>
+            </select>
 
-        <!-- Campi per i dati aziendali -->
-        <div id="azienda" style="display:none;">
-            <label>Ragione Sociale: <input type="text" name="ragione"></label><br>
-            <label>Indirizzo (Via/Corso ...): <input type="text" name="address2"></label><br>
-        </div>
+            <div id="azienda" style="display:none;">
+                <label>Ragione Sociale: <input type="text" name="ragione"></label><br>
+                <label>Indirizzo (Via/Corso ...): <input type="text" name="address2"></label><br>
+                <label>Username: <input type="text" name="nick" required></label><br>
+                <label>Password: <input type="password" name="password" required></label><br>
+            </div>
 
-        <!-- Campi per i dati personali dell'artigiano -->
-        <div id="artigiano" style="display:none;">
-            <label>Nome: <input type="text" name="name"></label><br>
-            <label>Cognome: <input type="text" name="surname"></label><br>
-            <label>Data di nascita: <input type="date" name="birthdate"></label><br>
-            <label>Credito iniziale: <input type="text" name="credit"></label><br>
-            <label>Indirizzo: <input type="text" name="address"></label><br>
-        </div>
-
-        <!-- Campi comuni per username e password -->
-        <label>Username: <input type="text" name="nick" required></label><br>
-        <label>Password: <input type="password" name="password" required></label><br>
+            <div id="artigiano" style="display:none;">
+                <label>Nome: <input type="text" name="name"></label><br>
+                <label>Cognome: <input type="text" name="surname"></label><br>
+                <label>Data di nascita: <input type="date" name="birthdate"></label><br>
+                <label>Credito iniziale: <input type="text" name="credit"></label><br>
+                <label>Indirizzo: <input type="text" name="address"></label><br>
+                <label>Username: <input type="text" name="nick" required></label><br>
+                <label>Password: <input type="password" name="password" required></label><br>
+            </div>
 
         <input type="submit" value="REGISTRA">
     </form>
 
     <!-- Script per mostrare i campi in base al tipo di utente selezionato -->
     <script>
-        document.querySelectorAll("input[name='type']").forEach(el => {
-            el.addEventListener("change", function() {
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("type").addEventListener("change", function(){
                 document.getElementById("azienda").style.display = this.value === "azienda" ? "block" : "none";
                 document.getElementById("artigiano").style.display = this.value === "artigiano" ? "block" : "none";
-            });
-        });
+            })
+        })
     </script>
 </main>
 
 <!-- Include il footer della pagina -->
-<?php include 'includes/footer.php'; ?>
+<?php include 'footer.php'; ?>
