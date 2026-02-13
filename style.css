@@ -76,6 +76,14 @@ p.successo{
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
+div.campiRegistrazione{
+  display: none; /* Nasconde i campi di registrazione specifici per azienda e artigiano */
+}
+
+div.campiRegistrazione label {
+  margin-bottom: 10px; /* Spaziatura tra i campi */
+}
+
 footer { 
   font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
 

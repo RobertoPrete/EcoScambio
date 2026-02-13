@@ -118,14 +118,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <option value="artigiano">Artigiano</option>
             </select>
 
-            <div id="azienda" style="display:none;">
+            <div class="campiRegistrazione" id="azienda">
                 <label>Ragione Sociale: <input type="text" name="ragione"></label><br>
                 <label>Indirizzo (Via/Corso ...): <input type="text" name="address2"></label><br>
                 <label>Username: <input type="text" name="nick" required></label><br>
                 <label>Password: <input type="password" name="password" required></label><br>
             </div>
 
-            <div id="artigiano" style="display:none;">
+            <div class="campiRegistrazione" id="artigiano">
                 <label>Nome: <input type="text" name="name"></label><br>
                 <label>Cognome: <input type="text" name="surname"></label><br>
                 <label>Data di nascita: <input type="date" name="birthdate"></label><br>
