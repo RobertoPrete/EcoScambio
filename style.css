@@ -91,7 +91,7 @@ div.campiRegistrazione{
   display: none; /* Nasconde i campi di registrazione specifici per azienda e artigiano */
 }
 
-input {
+div.campiRegistrazione input{
   margin: 10px; /*  Spaziatura interna dei campi di input */
 }
 
