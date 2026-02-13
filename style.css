@@ -81,7 +81,11 @@ div.campiRegistrazione{
 }
 
 div.campiRegistrazione label {
-  margin-bottom: 10px; /* Spaziatura tra i campi */
+  padding:5px; /* Spaziatura interna delle etichette */
+}
+
+div.campiRegistrazione input {
+  padding: 5px; /* Spaziatura interna dei campi di input */
 }
 
 footer { 
