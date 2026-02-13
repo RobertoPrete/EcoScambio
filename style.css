@@ -82,7 +82,7 @@ p.successo{
 /* Stile per i campi del form diregistrazione.php */
 legend {
   background-color: white;
-  padding: 2px 5px; 
+  padding: 5px 10px; 
   font-size: 1.2em; 
   font-weight: bold; 
 }
