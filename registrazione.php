@@ -135,7 +135,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label>Password: <input type="password" name="password" required></label><br>
             </div>
 
-        <input type="submit" value="REGISTRA">
+            <input type="submit" value="REGISTRA">
+        </fieldset>
     </form>
 
     <!-- Script per mostrare i campi in base al tipo di utente selezionato -->
