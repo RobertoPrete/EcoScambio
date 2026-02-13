@@ -94,6 +94,10 @@ div.campiRegistrazione{
 /*div.campiRegistrazione input{
   margin: 2px; /*  Spaziatura interna dei campi di input 
 } */
+input {
+  margin: 5px; /* Spaziatura interna dei campi di input */
+  padding: 5px; /* Spaziatura interna dei campi di input */
+}
 
 footer { 
   font-family: "Times New Roman", Georgia, Serif; 

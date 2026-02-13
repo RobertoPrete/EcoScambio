@@ -100,25 +100,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Form di login -->
     <form method="post" id="login">
         <fieldset>
-        <legend>Login</legend>
-        <label for="user">Username:</label>
-        <!-- Campo per l'username, precompilato se salvato nei cookie -->
-        <input type="text" id="user" name="user" value="<?= htmlspecialchars($rememberedUser) ?>"><br>
-        <!-- Trasforma i caratteri speciali (come < o >) in entità HTML (come &lt; e &gt;). 
-         Questo impedisce attacchi di tipo XSS (Cross-Site Scripting), evitando che un utente malintenzionato 
-         possa inserire del codice JavaScript maligno nel campo e farlo eseguire dal browser. -->
+            <legend>Login</legend>
+            <label for="user">Username:</label>
+            <!-- Campo per l'username, precompilato se salvato nei cookie -->
+            <input type="text" id="user" name="user" value="<?= htmlspecialchars($rememberedUser) ?>"><br>
+            <!-- Trasforma i caratteri speciali (come < o >) in entità HTML (come &lt; e &gt;). 
+            Questo impedisce attacchi di tipo XSS (Cross-Site Scripting), evitando che un utente malintenzionato 
+            possa inserire del codice JavaScript maligno nel campo e farlo eseguire dal browser. -->
 
-        <label for="pwd">Password:</label>
-        <!-- Campo per la password, precompilato se salvata nei cookie -->
-        <input type="password" id="pwd" name="pwd" value="<?= htmlspecialchars($rememberedPwd) ?>"><br>
+            <label for="pwd">Password:</label>
+            <!-- Campo per la password, precompilato se salvata nei cookie -->
+            <input type="password" id="pwd" name="pwd" value="<?= htmlspecialchars($rememberedPwd) ?>"><br>
 
-        <!-- Checkbox per l'opzione "Ricordami" -->
-        <label><input type="checkbox" name="remember">Rimani collegato</label><br>
+            <!-- Checkbox per l'opzione "Ricordami" -->
+            <label><input type="checkbox" name="remember">Rimani collegato</label><br>
 
-        <!-- Pulsanti per inviare o resettare il modulo -->
-        <input type="submit" id="bottoneInvia" value="INVIA" >
-        <input type="reset" id="bottoneCancella" value="CANCELLA" >
-        <fieldset>
+            <!-- Pulsanti per inviare o resettare il modulo -->
+            <input type="submit" id="bottoneInvia" value="INVIA" >
+            <input type="reset" id="bottoneCancella" value="CANCELLA" >
+        </fieldset>
     </form>
 </main>
 
