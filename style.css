@@ -82,7 +82,7 @@ p.successo{
 /* Stile per i campi del form diregistrazione.php */
 legend {
   background-color: white;
-  padding: 5px 10px; 
+  padding: 3px 8px; 
   font-size: 1.2em; 
   font-weight: bold; 
 }
@@ -95,7 +95,10 @@ div.campiRegistrazione{
   margin: 2px; /*  Spaziatura interna dei campi di input 
 } */
 
-
+input {
+  padding: 5px; /* Spaziatura interna dei campi di input */
+  margin: 5px 0; /* Spaziatura verticale tra i campi di input */
+}
 
 footer { 
   font-family: "Times New Roman", Georgia, Serif; 
