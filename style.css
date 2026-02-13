@@ -66,6 +66,16 @@ span a{
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
+p.errori{
+  color: red; /* Colore del testo rosso per gli errori */
+  font-weight: bold; /* Rende il testo in grassetto */
+}
+
+p.successo{
+  color: blue; /* Colore del testo verde per i successi */
+  font-weight: bold; /* Rende il testo in grassetto */
+}
+
 footer { 
   font-family: "Times New Roman", Georgia, Serif; font-style: italic; font-size: 0.8em; 
 
