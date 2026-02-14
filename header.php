@@ -49,7 +49,7 @@ else
                 //Mostra il nome dell'utente e il credito disponibile in alto a destra
                 echo "<div style='text-align:right; font-size:0.9em;'>Utente: $utente | Credito: € " . number_format($credito, 2) . "</div>";
                 ?>
-                <h1><img id="logo" src="img/logo1.jpg" alt="logo ECOnnectify"></h1>
+                <h1><a href="home.php"><img id="logo" src="img/logo1.jpg" alt="logo ECOnnectify"></a></h1>
                 <p class='slogan'>"Dallo scarto al valore: il futuro è sostenibile."</p>             
         </header>
 
