@@ -99,6 +99,7 @@ input {
 /* Stile per la lista dei materiali*/
 table, th, td {
   border: 1px solid #228B22;
+  padding: 2%;
 }
 
 footer { 

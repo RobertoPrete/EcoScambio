@@ -70,7 +70,6 @@
                 <input type="date" name="data" value="<?= isset($_GET['data']) ? htmlspecialchars($_GET['data']) : '' ?>">
             </label>
             <input type="submit" value="Filtra">
-        </fieldset>
     </form>
 
     <?php if (count($materiali) === 0): ?>
@@ -106,6 +105,7 @@
                 ?>
             </tr>
             <?php endforeach; ?>
+        </fieldset>
         </table>
     <?php endif; ?>
 </main>
