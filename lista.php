@@ -60,7 +60,7 @@
     <!-- Form per filtrare i materiali in base al nome e alla data -->
     <form method="get">
         <fieldset>
-            <legend>Materiali</legend>
+            <legend>Filtri</legend>
             <label>Nome materiale: 
                 <!-- Campo di input per il filtro sul nome -->
                 <input type="text" name="nome" value="<?= isset($_GET['nome']) ? htmlspecialchars($_GET['nome']) : '' ?>">
@@ -70,6 +70,7 @@
                 <input type="date" name="data" value="<?= isset($_GET['data']) ? htmlspecialchars($_GET['data']) : '' ?>">
             </label>
             <input type="submit" value="Filtra">
+        </fieldset>
     </form>
 
     <?php if (count($materiali) === 0): ?>
@@ -77,6 +78,8 @@
         <p>Nessun materiale trovato.</p>
     <?php else: ?>
         <!-- Tabella per visualizzare i materiali trovati -->
+         <fieldset>
+            <legend>Materiali disponibili</legend>
         <table class="materiali">
             <tr>
                 <th>Nome</th>
@@ -105,8 +108,8 @@
                 ?>
             </tr>
             <?php endforeach; ?>
-        </fieldset>
         </table>
+        </fieldset>
     <?php endif; ?>
 </main>
 
