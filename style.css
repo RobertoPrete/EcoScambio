@@ -102,12 +102,13 @@ table, th, td {
 }
 
 table {
-  padding-top: 2%;
+  margin-top: 2%;
 }
 
 th, td {
   padding: 2%;
   text-align: left;
+  width: 100%;
 }
 
 footer { 
