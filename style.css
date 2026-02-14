@@ -105,12 +105,7 @@ table {
   margin-top: 2%;
   border-spacing: 5px; 
   border-collapse: separate;
-}
-
-td {
-  padding: 2%;
-  text-align: left;
-  white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
+  table-layout: auto; /* Permette alla tabella di adattarsi al contenuto */
 }
 
 th {
@@ -118,7 +113,16 @@ th {
   font-weight: bold;
   text-align: center;
   white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
+  width: auto; /* Permette alle celle di adattarsi al contenuto */
 }
+
+td {
+  padding: 2%;
+  text-align: left;
+  white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
+  width: auto; /* Permette alle celle di adattarsi al contenuto */
+}
+
 
 footer { 
   font-family: "Times New Roman", Georgia, Serif; 

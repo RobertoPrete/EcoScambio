@@ -84,7 +84,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
-                <th>Data</th>
+                <th>Data (gg-mm-aaaa)</th>
                 <?php
                 if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
                     session_start();
