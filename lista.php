@@ -55,7 +55,7 @@
 
 
 <main>
-    <h2>Lista</h2>
+    <h2>Lista materiali</h2>
 
     <!-- Form per filtrare i materiali in base al nome e alla data -->
     <form method="get">
@@ -98,7 +98,7 @@
                 <!-- Mostra i dettagli di ogni materiale -->
                 <td><?= htmlspecialchars($m['nome']) ?></td>
                 <td><?= htmlspecialchars($m['descr']) ?></td>
-                <td><?= $m['data'] ?></td>
+                <td><?= !empty($m['data']) ? date("d-m-Y", strtotime($m['data'])) : '' ?></td>
                 <?php
                 if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
                     session_start();

@@ -110,12 +110,14 @@ table {
 td {
   padding: 2%;
   text-align: left;
+  white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
 }
 
 th {
   padding:2%;
   font-weight: bold;
   text-align: center;
+  white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
 }
 
 footer { 
