@@ -1,7 +1,5 @@
 header {
   text-align: center; /* Centra il contenuto dell'intestazione */
-  /*background-color: #708090; /* Colore di sfondo grigio ardesia */
-  /*color: white; /* Colore del testo bianco */
   padding: 1px; /* Spaziatura interna */
 }
 header.slogan{
@@ -55,7 +53,7 @@ un massimo di 30 caratteri.
  NOTA: impostare a 30 caratteri il minimo per content, (che e' a fianco a navigation, che � largo necessariamente 10 caratteri) e contemporaneamente per header e footer, implica che necessariamente in finestre "piccole" (<40 caratteri) questi elementi saranno non bene allineati (ma poiche' la specifica dell'esercizio richiede cosi', necessario ottemperare */    
   padding:2%;
   margin-left: 11em;
-  margin-right: 8em;
+  margin-right: 10em;
   min-width: 30rem;
   padding-bottom:6em; 
   justify-content: center;
