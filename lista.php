@@ -80,7 +80,7 @@
         <!-- Tabella per visualizzare i materiali trovati -->
          <fieldset>
             <legend>Materiali disponibili</legend>
-        <table class="materiali">
+        <table class="materialiLista">
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>

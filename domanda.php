@@ -136,36 +136,30 @@
                 <p>Nessun materiale trovato.</p>
             <?php else: ?>
                 <!-- Tabella per visualizzare i materiali trovati -->
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Descrizione</th>
-                            <th>Data</th>
-                            <th>Quantità disponibile</th>
-                            <th>Costo per pezzo (€)</th>
-                            <th>Quantità da acquistare</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($materiali as $mat): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($mat['nome']) ?></td>
-                            <td><?= htmlspecialchars($mat['descr']) ?></td>
-                            <td><?= $mat['data'] ?></td>
-                            <td><?= $mat['qta'] ?></td>
-                            <td><?= $mat['costo'] ?></td>
-                            <td>
-                                <!-- Campo per selezionare la quantità da acquistare -->
-                                <input type="number" name="quantita[<?= $mat['id'] ?>]" id="quantita_<?= $mat['id'] ?>" 
-                                    min="0" max="<?= $mat['qta'] ?>" 
-                                    value="<?= isset($quantita_preselezionata[$mat['id']]) ? $quantita_preselezionata[$mat['id']] : 0 ?>">
-                                <!-- Pulsante Annulla per azzerare la quantità selezionata -->
-                                <input type="button" value="Deseleziona Prodotto" onclick="document.getElementById('quantita_<?= $mat['id'] ?>').value = 0;">
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                <table class="materialiDomanda">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Descrizione</th>
+                        <th>Data</th>
+                        <th>Quantità disponibile</th>
+                        <th>Costo per pezzo (€)</th>
+                        <th>Quantità da acquistare</th>
+                    </tr>
+                    <?php foreach ($materiali as $mat): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($mat['nome']) ?></td>
+                        <td><?= htmlspecialchars($mat['descr']) ?></td>
+                        <td><?= $mat['data'] ?></td>
+                        <td><?= $mat['qta'] ?></td>
+                        <td><?= $mat['costo'] ?></td>
+                        <td>
+                            <!-- Campo per selezionare la quantità da acquistare -->
+                            <input type="number" name="quantita[<?= $mat['id'] ?>]" id="quantita_<?= $mat['id'] ?>" min="0" max="<?= $mat['qta'] ?>" value="<?= isset($quantita_preselezionata[$mat['id']]) ? $quantita_preselezionata[$mat['id']] : 0 ?>">
+                            <!-- Pulsante Annulla per azzerare la quantità selezionata -->
+                            <input type="button" value="Deseleziona Prodotto" onclick="document.getElementById('quantita_<?= $mat['id'] ?>').value = 0;">
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
                 </table>
                 <br>
                 <!-- Pulsanti per annullare o procedere all'acquisto -->

@@ -102,7 +102,7 @@ table, th, td {
   border: 1px solid #228B22;
 }
 
-table {
+table.materialiLista {
   margin-top: 2%;
   border-spacing: 5px; 
   border-collapse: separate;
@@ -110,7 +110,7 @@ table {
   width: 100%; /* La tabella occupa tutta la larghezza disponibile */
 }
 
-th {
+table.materialiLista th {
   padding:1%;
   font-weight: bold;
   text-align: center;
@@ -118,7 +118,7 @@ th {
   width: auto; /* Permette alle celle di adattarsi al contenuto */
 }
 
-td {
+table.materialiLista td {
   padding: 1%;
   text-align: left;
   white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
