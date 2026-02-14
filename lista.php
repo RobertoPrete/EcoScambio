@@ -77,7 +77,7 @@
         <p>Nessun materiale trovato.</p>
     <?php else: ?>
         <!-- Tabella per visualizzare i materiali trovati -->
-        <table class="materiali">>
+        <table class="materiali">
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
