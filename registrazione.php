@@ -121,8 +121,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <div class="campiRegistrazione" id="azienda">
                 <label>Ragione Sociale: <input type="text" name="ragione"></label><br>
                 <label>Indirizzo (Via/Corso ...): <input type="text" name="address2"></label><br>
-                <label>Username: <input type="text" name="nick" ></label><br>
-                <label>Password: <input type="password" name="password" ></label><br>
             </div>
 
             <div class="campiRegistrazione" id="artigiano">
@@ -131,10 +129,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label>Data di nascita: <input type="date" name="birthdate"></label><br>
                 <label>Credito iniziale: <input type="text" name="credit"></label><br>
                 <label>Indirizzo: <input type="text" name="address"></label><br>
-                <label>Username: <input type="text" name="nick" ></label><br>
-                <label>Password: <input type="password" name="password" ></label><br>
             </div>
 
+            <label>Username: <input type="text" id="nick" name="nick" required></label><br>
+            <label>Password: <input type="password" id="password" name="password" required></label><br>
             <input type="submit" value="REGISTRA">
         </fieldset>
     </form>
@@ -142,26 +140,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <!-- Script per mostrare i campi in base al tipo di utente selezionato -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const typeSelect = document.getElementById("type");
-            const aziendaDiv = document.getElementById("azienda");
-            const artigianoDiv = document.getElementById("artigiano");
-
-            typeSelect.addEventListener("change", function() {
-                if (this.value === "azienda") {
-                    aziendaDiv.style.display = "block";
-                    artigianoDiv.style.display = "none";
-
-                    aziendaDiv.querySelectorAll("input").forEach(i => i.required = true);
-                    artigianoDiv.querySelectorAll("input").forEach(i => i.required = false);
-                } else if (this.value === "artigiano") {
-                    aziendaDiv.style.display = "none";
-                    artigianoDiv.style.display = "block";
-
-                    artigianoDiv.querySelectorAll("input").forEach(i => i.required = true);
-                    aziendaDiv.querySelectorAll("input").forEach(i => i.required = false);
-                }
-            });
-    });
+            document.getElementById("type").addEventListener("change", function(){
+                document.getElementById("azienda").style.display = this.value === "azienda" ? "block" : "none";
+                document.getElementById("artigiano").style.display = this.value === "artigiano" ? "block" : "none";
+                document.getElementById("nick").style.display = "block";
+                document.getElementById("password").style.display = "block";
+            })
+        });
     </script>
 </main>
 
