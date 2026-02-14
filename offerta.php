@@ -126,7 +126,7 @@
                     Quantità: <input type="text" name="quantita" value="<?= $mat['qta'] ?>"><br>
                     Costo (€): <input type="text" name="costo" value="<?= $mat['costo'] ?>"><br>
                     <input type="submit" name="update" value="Aggiorna">
-                </form><hr>
+                </form><br>
             <?php endforeach; ?>
         <?php endif; ?>
     </fieldset>  
