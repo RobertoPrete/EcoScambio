@@ -104,7 +104,7 @@ table, th, td {
 
 table.materialiLista {
   margin-top: 2%;
-  border-spacing: 5px; 
+  border-spacing: 2px; 
   border-collapse: separate;
   table-layout: auto; /* Permette alla tabella di adattarsi al contenuto */
   width: 100%; /* La tabella occupa tutta la larghezza disponibile */
