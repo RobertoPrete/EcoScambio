@@ -9,7 +9,7 @@
     if (!isset($_SESSION['id']) || !isset($_SESSION['utente'])) {
         echo "<script>
         document.addEventListener('DOMContentLoaded', function() {
-            alert('Devi essere loggato come azienda per accedere al contenuto di questa pagina.');
+            alert('Attenzione! Questa pagina è riservata alle aziende registrate. Inserisci le credenziali prima di procedere a modificare o inserire nuove offerte di materiali di scarto.');
             window.location.href = 'login.php';
         });
         </script>";

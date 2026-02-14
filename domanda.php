@@ -8,7 +8,7 @@
     if (!isset($_SESSION['id']) || !isset($_SESSION['utente']) || !isset($_SESSION['credito'])) { // fare un controllo successivo quando faccio login con tipo utente uguale ad aziedn
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
-                alert('Devi essere loggato come artigiano per accedere al contenuto di questa pagina.');
+                alert('Attenzione! Questa pagina è riservata agli artigiani registrati. Inserisci le credenziali prima di procedere all\'acquisto.');
                 window.location.href = 'login.php';
             });
             </script>";
