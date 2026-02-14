@@ -107,7 +107,7 @@ table.materialiLista {
   border-spacing: 2px; 
   border-collapse: separate;
   table-layout: auto; /* Permette alla tabella di adattarsi al contenuto */
-  width: 100%; /* La tabella occupa tutta la larghezza disponibile */
+  width: auto; /* La tabella occupa tutta la larghezza disponibile */
 }
 
 table.materialiLista th {
