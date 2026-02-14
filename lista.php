@@ -60,7 +60,7 @@
     <!-- Form per filtrare i materiali in base al nome e alla data -->
     <form method="get">
         <fieldset>
-            <legend>Filtri</legend>
+            <legend>Filtri di ricerca</legend>
             <label>Nome materiale: 
                 <!-- Campo di input per il filtro sul nome -->
                 <input type="text" name="nome" value="<?= isset($_GET['nome']) ? htmlspecialchars($_GET['nome']) : '' ?>">
