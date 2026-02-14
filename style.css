@@ -125,21 +125,6 @@ table.materialiLista td {
   width: auto; /* Permette alle celle di adattarsi al contenuto */
 }
 
-table.materialiDomanda th {
-  padding:1%;
-  font-weight: bold;
-  text-align: center;
-  white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
-  width: auto; /* Permette alle celle di adattarsi al contenuto */
-}
-
-table.materialiDomanda td {
-  padding: 1%;
-  text-align: left;
-  white-space: nowrap; /* Impedisce la rottura del testo all'interno delle celle */
-  width: auto; /* Permette alle celle di adattarsi al contenuto */
-}
-
 
 footer { 
   font-family: "Times New Roman", Georgia, Serif; 
