@@ -131,8 +131,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label>Indirizzo: <input type="text" name="address"></label><br>
             </div>
 
-            <label>Username: <input type="text" id="nick" name="nick" required></label><br>
-            <label>Password: <input type="password" id="password" name="password" required></label><br>
+            <div class="campiRegistrazione">
+                <label>Username: <input type="text" id="nick" name="nick" required></label><br>
+                <label>Password: <input type="password" id="password" name="password" required></label><br>
+            </div>
             <input type="submit" value="REGISTRA">
         </fieldset>
     </form>
