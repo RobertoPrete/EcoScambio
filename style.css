@@ -103,6 +103,8 @@ table, th, td {
 
 table {
   margin-top: 2%;
+  border-spacing: 5px; 
+  border-collapse: separate;
 }
 
 td {
