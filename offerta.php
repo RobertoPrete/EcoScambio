@@ -7,7 +7,13 @@ if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la s
 
 // Controlla se l'utente è loggato
 if (!isset($_SESSION['id']) || !isset($_SESSION['utente'])) {
-    echo "<p>Accesso negato. Per accedere al contenuto di questa pagina devi essere loggato come 'Azienda'.</p>";
+    echo "<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        alert('Devi essere loggato come azienda per accedere al contenuto di questa pagina.');
+        window.location.href = 'login.php';
+    });
+    </script>";
+    //echo "<p>Accesso negato. Per accedere al contenuto di questa pagina devi essere loggato come 'Azienda'.</p>";
     include "footer.php";
     exit;
 }
