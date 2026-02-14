@@ -92,10 +92,6 @@ div.campiRegistrazione{
   display: none; /* Nasconde i campi di registrazione specifici per azienda e artigiano, che saranno mostrati solo dopo la selezione del tipo di utente */
 }
 
-#nick, #password {
-  display: none; /* Nasconde i campi di input per username e password, che saranno mostrati solo dopo la selezione del tipo di utente */
-}
-
 input {
   margin: 2px; /* Spaziatura interna dei campi di input */
   padding: 2px; /* Spaziatura interna dei campi di input */

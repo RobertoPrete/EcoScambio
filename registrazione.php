@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <label>Indirizzo: <input type="text" name="address"></label><br>
             </div>
 
-            <div class="campiRegistrazione">
+            <div class="campiRegistrazione" id="nickPassword">
                 <label>Username: <input type="text" id="nick" name="nick" required></label><br>
                 <label>Password: <input type="password" id="password" name="password" required></label><br>
             </div>
@@ -145,8 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             document.getElementById("type").addEventListener("change", function(){
                 document.getElementById("azienda").style.display = this.value === "azienda" ? "block" : "none";
                 document.getElementById("artigiano").style.display = this.value === "artigiano" ? "block" : "none";
-                document.getElementById("nick").style.display = "block";
-                document.getElementById("password").style.display = "block";
+                document.getElementById("nickPassword").style.display = "block";
             })
         });
     </script>
