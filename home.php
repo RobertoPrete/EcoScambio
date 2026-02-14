@@ -2,20 +2,6 @@
 include 'header.php'; // Include l'intestazione della pagina, che contiene il titolo, i link CSS e il menu di navigazione
 ?>
 <main>
-  <!--il tag <strong> evidenzia in grassetto il testo-->
-
-  <!-- Descrizione della piattaforma ECOnnectify -->
-  <!--<h2>Dove anche lo scarto ha valore</h2> 
-  <p>
-    🌍 <strong>Un nuovo modo di dare valore agli scarti</strong>. EcoScambio è la piattaforma che connette aziende che vogliono liberarsi in modo intelligente dei propri materiali di scarto con artigiani, designer e creativi in cerca di risorse accessibili e sostenibili.
-  </p>
-  <p>
-    ♻️ Che tu sia un'impresa con materiali inutilizzati o un artigiano alla ricerca di materiali riciclati, qui puoi trasformare ciò che è "scarto" in nuova opportunità. Offri, cerca, scambia: ogni materiale ha ancora molto da dare.
-  </p>
-  <p>
-    ✅ Unisciti alla nostra rete circolare: <strong>registrati</strong> o <strong>accedi</strong> per iniziare a scoprire offerte, pubblicare richieste e contribuire a un'economia più verde e collaborativa.
-  </p>-->
-  <!--<h2>Connessione tra scarti e creatività</h2>-->
   <p class="introHome">Ogni anno, tonnellate di materiali tessili, caratacei, plastici o compositi vengono scartati dalle aziende di produzione e finiscono in una discarica, non perché siano inutilizzabili, ma perché non trovano la strada verso chi saprebbe dar loro nuova vita. Allo stesso tempo, migliaia di artigiani, designer e startup sostenibili lottano per accedere a materie prime a costi accessibili.</p>
   <h2><strong>Chi siamo e cosa facciamo</strong></h2>
   <p class="chiSiamo">ECOnnectify nasce proprio per colmare questo divario, creando un ponte tra chi ha materiali di scarto e chi è alla ricerca di risorse sostenibili per i propri progetti creativi. La nostra piattaforma è un luogo dove le aziende possono liberarsi in modo intelligente dei loro materiali inutilizzati, mentre artigiani, designer e creativi possono trovare tesori nascosti a prezzi accessibili.</p>
