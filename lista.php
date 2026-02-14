@@ -78,13 +78,18 @@
         <p>Nessun materiale trovato.</p>
     <?php else: ?>
         <!-- Tabella per visualizzare i materiali trovati -->
-        <table border="1" cellpadding="5" cellspacing="0">
+        <table class="materiali">>
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
                 <th>Data</th>
-                <th>Quantità</th>
-                <th>Costo €</th>
+                <?php
+                if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
+                    session_start();
+                if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] === "Artigiano") {
+                    echo "<th>Quantità</th><th>Costo unitario €</th>";
+                }
+                ?>
             </tr>
             <?php foreach ($materiali as $m): ?>
             <tr>
@@ -92,8 +97,13 @@
                 <td><?= htmlspecialchars($m['nome']) ?></td>
                 <td><?= htmlspecialchars($m['descr']) ?></td>
                 <td><?= $m['data'] ?></td>
-                <td><?= $m['qta'] ?></td>
-                <td><?= number_format($m['costo'], 2) ?></td>
+                <?php
+                if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
+                    session_start();
+                if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] === "Artigiano") {
+                    echo "<td>" . htmlspecialchars($m['qta']) . "</td><td>" . number_format($m['costo'], 2) . "</td>";
+                }
+                ?>
             </tr>
             <?php endforeach; ?>
         </table>

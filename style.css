@@ -91,12 +91,14 @@ div.campiRegistrazione{
   display: none; /* Nasconde i campi di registrazione specifici per azienda e artigiano */
 }
 
-/*div.campiRegistrazione input{
-  margin: 2px; /*  Spaziatura interna dei campi di input 
-} */
 input {
   margin: 2px; /* Spaziatura interna dei campi di input */
   padding: 2px; /* Spaziatura interna dei campi di input */
+}
+
+/* Stile per la lista dei materiali*/
+table, th, td {
+  border: 1px solid #228B22;
 }
 
 footer { 
