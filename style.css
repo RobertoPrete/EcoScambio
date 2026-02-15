@@ -31,7 +31,6 @@ body { background-image: url('img/back2.jpg');
 nav {
   float:left;
   padding: 2%;
-  /*border-top: 1%;*/
   width: 10rem;
 /*menu di navigazione; con 'float: left' specifico che deve trovarsi sul lato sinistro*/
 }
