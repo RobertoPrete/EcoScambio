@@ -164,8 +164,8 @@ footer {
 /*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
 
 nav ul.menu li a:hover {
-  color: white; 
-  background-color: #228B22; 
+  color: #228B22; 
+  background-color: white; 
   text-decoration: none; 
 }
 
