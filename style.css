@@ -27,12 +27,6 @@ body { background-image: url('img/back2.jpg');
     max-height: 180px; /* Limita la larghezza massima del logo */
     display: block;
     margin: 0 auto; /* Centra il logo orizzontalmente */
-    border: 1px solid white; /* Bordo grigio chiaro */
-    transition: transform 0.3s, border-color 0.3s; /* Aggiunge una transizione per l'effetto hover */
-}
-#logo:hover {
-  transform: scale(1.1); /* Ingrandisce leggermente il logo al passaggio del mouse */
-  border-color: white; /* Cambia il colore del bordo al passaggio del mouse */
 }
 
 nav {
@@ -51,6 +45,9 @@ nav ul.menu a {
   text-decoration: none; /* Rimuove la sottolineatura */
   color: #228B22; /* Colore del testo */
   padding-top: 5%;
+}
+nav ul.menu a:hover {
+  color: white; background: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
 }
 
 main {
