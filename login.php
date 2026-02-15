@@ -75,6 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->close();
         $conn->close();
 
+        // Aggiunge uno script JavaScript per precompilare i campi di login con i dati ricordati, se l'opzione "Ricordami" è stata selezionata
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('bottoneInvia').addEventListener('click', function() {
@@ -93,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
     } else {
-        // Se le credenziali non sono valide, mostra un messaggio di errore
+        // Se le credenziali non sono valide, mostra un messaggio di errore e resetta i campi di login
         $error = "Credenziali non valide.";
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
@@ -120,14 +121,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <legend>Login</legend>
             <label for="user">Username:</label>
             <!-- Campo per l'username, precompilato se salvato nei cookie -->
-            <input type="text" id="user" name="user" value="<?= htmlspecialchars($rememberedUser) ?>"><br>
+            <input type="text" id="user" name="user" value=""><br>
             <!-- Trasforma i caratteri speciali (come < o >) in entità HTML (come &lt; e &gt;). 
             Questo impedisce attacchi di tipo XSS (Cross-Site Scripting), evitando che un utente malintenzionato 
             possa inserire del codice JavaScript maligno nel campo e farlo eseguire dal browser. -->
 
             <label for="pwd">Password:</label>
             <!-- Campo per la password, precompilato se salvata nei cookie -->
-            <input type="password" id="pwd" name="pwd" value="<?= htmlspecialchars($rememberedPwd) ?>"><br>
+            <input type="password" id="pwd" name="pwd" value=""><br>
 
             <!-- Checkbox per l'opzione "Ricordami" -->
             <label><input type="checkbox" name="remember">Rimani collegato</label><br>
