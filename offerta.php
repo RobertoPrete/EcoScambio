@@ -49,11 +49,11 @@
         $costo = $_POST['costo'];
 
         // Validazione dei dati
-        if (!preg_match('/^[A-Za-z0-9 ]{10,40}$/', $nome)) $errors[] = "Nome non valido.";
+        if (!preg_match('/^[A-Za-z0-9 ]{10,40}$/', $nome)) $errors[] = "Nome non valido. Nome deve essere una stringa di minimo 10 caratteri e massimo 40 caratteri, con solo lettere, numeri e spazi.";
         if (strlen($descrizione) > 250) $errors[] = "Descrizione troppo lunga.";
-        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $data)) $errors[] = "Data non valida.";
-        if (!filter_var($quantita, FILTER_VALIDATE_INT)) $errors[] = "Quantità non valida.";
-        if (!preg_match('/^\d+(\.\d{1,2})?$/', $costo) || ((int)($costo * 100) % 5 != 0)) $errors[] = "Costo non valido.";
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $data)) $errors[] = "Data non valida. Inserire la data nel formato aaaa-mm-gg.";
+        if (!filter_var($quantita, FILTER_VALIDATE_INT)) $errors[] = "Quantità non valida. Quantità deve essere un numero intero.";
+        if (!preg_match('/^\d+(\.\d{1,2})?$/', $costo) || ((int)($costo * 100) % 5 != 0)) $errors[] = "Costo non valido. Costo deve essere espressocon la precisione dei centesimi (ma come valori ammissibili nei centesimi sono ammissibili solo multipli di 5)";
 
         // Inserisce il materiale nel database se non ci sono errori
         if (empty($errors)) {
@@ -138,7 +138,7 @@
             <input type="hidden" name="new" value="1">
             Nome: <input type="text" name="nome" required><br>
             Descrizione: <input type="text" name="descrizione" required><br>
-            Data: <input type="date" name="data" required><br>
+            Data (aaaa-mm-gg): <input type="text" name="data" required><br>
             Quantità: <input type="number" name="quantita" required><br>
             Costo (€): <input type="text" name="costo" required><br>
             <input type="submit" value="Inserisci">
