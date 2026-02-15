@@ -144,7 +144,7 @@ footer {
   min-width: 30rem;
   font-style: italic; /* Stile corsivo */
   grid-area: footer;
-  /*padding: 2em;*/
+  padding: 2em;
 } 
 
 /*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
@@ -152,6 +152,12 @@ footer {
 nav ul.menu li a:hover {
   color: white;
   background-color: #228B22;
+  text-decoration: none; 
+}
+
+nav ul.menu li a:active {
+  color: white;
+  background-color: #006400;
   text-decoration: none; 
 }
 
@@ -166,6 +172,9 @@ nav ul.menu li a:hover {
             "footer";
     }
     main{
-        margin-left: 0em;
+        padding:2% 5%;
+    }
+    nav{
+        padding: 2% 5%;
     }
 }
