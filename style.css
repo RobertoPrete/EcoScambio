@@ -43,7 +43,9 @@ body { background-image: url('img/back2.jpg');
 
 nav {
   padding: 2%;
-  width: 10rem;
+  /*width: 10rem;*/
+  width: auto;
+  min-width: 10rem; /* Imposta una larghezza minima per la navigazione*/
   grid-area: nav;
   /*padding: 2em;*/
 }
