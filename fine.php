@@ -1,7 +1,8 @@
 
 <?php
     include "header.php";
-    session_start();
+    if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
+        session_start();
 
     // Recupera i dati inviati dal form
     // $ids contiene gli ID dei materiali selezionati
@@ -48,7 +49,7 @@
     echo "<h2>Conclusione</h2>";
     echo "<p class='successo'>Acquisto completato con successo!</p>";
     echo "<form action='domanda.php'>";
-    echo "<input type='submit' value='Torna alla pagina d'acquisto'>";
+    echo "<input type='submit' value='Torna alla pagina d\'acquisto'>";
     echo "</form>";
     echo "<form action='home.php'>";
     echo "<input type='submit' value='Torna alla pagina principale'>";
