@@ -33,6 +33,14 @@
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ? AND DATA >= ?");
         $dataFiltro = new DateTime($dataFiltro); // Crea un oggetto DateTime per formattare la data correttamente
         $stmt->bind_param("ss", $nomeFiltro, $dataFiltro->format('Y-m-d')); // Associa i parametri alla query
+    }else if(!preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $dataFiltro) && $dataFiltro !== "") {
+        // Se è stato fornito un filtro per la data ma non è in un formato valido, mostra un messaggio di errore e reindirizza alla stessa pagina
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                alert('Formato data non valido. Inserire la data nel formato aaaa-mm-gg.');
+                window.location.href = 'lista.php';
+            });
+            </script>";
     }else if($dataFiltro==="") {
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
