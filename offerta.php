@@ -31,8 +31,7 @@
     $stmt->close();
 
     if ($isArtigiano) {
-        echo "<p>Benvenuto nella sezione Offerta. Qui puoi inserire i materiali di scarto che la tua azienda desidera vendere oppure aggiornare quelli inseriti in precedenza. Assicurati di fornire informazioni accurate e dettagliate.</p>";
-        echo "<p>Solo le aziende possono accedere a questa pagina.</p>";
+        echo "<p>Benvenuto nella sezione Offerta. Qui puoi inserire i materiali di scarto che la tua azienda desidera vendere oppure aggiornare quelli inseriti in precedenza. Assicurati di fornire informazioni accurate e dettagliate.<p>Solo le aziende possono accedere a questa pagina.</p>";
         include "footer.php";
         exit;
     }
