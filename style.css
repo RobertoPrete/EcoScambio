@@ -2,7 +2,7 @@ header {
   text-align: center; /* Centra il contenuto dell'intestazione */
   padding: 1px; /* Spaziatura interna */
 }
-header.slogan{
+header .slogan{
   font-size: 1em;
   color: #228B22;
   margin-top: 2px;
@@ -30,7 +30,6 @@ body { background-image: url('img/back2.jpg');
 }
 
 nav {
-  float:left;
   padding: 2%;
   width: 10rem;
 /*menu di navigazione; con 'float: left' specifico che deve trovarsi sul lato sinistro*/
@@ -66,8 +65,6 @@ main {
 un massimo di 30 caratteri.
  NOTA: impostare a 30 caratteri il minimo per content, (che e' a fianco a navigation, che � largo necessariamente 10 caratteri) e contemporaneamente per header e footer, implica che necessariamente in finestre "piccole" (<40 caratteri) questi elementi saranno non bene allineati (ma poiche' la specifica dell'esercizio richiede cosi', necessario ottemperare */    
   padding:2%;
-  margin-left: 11em;
-  margin-right: 10em;
   min-width: 30rem;
   padding-bottom:6em; 
   justify-content: center;
