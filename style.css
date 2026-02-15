@@ -47,20 +47,6 @@ nav {
   /*padding: 2em;*/
 }
 
-/*
-nav ul.menu li{
-    padding-top: 5%;
-    font-weight: bold;
-}
-
-nav ul.menu a {
-  margin: 10px 10px;
-  text-decoration: none; 
-  color: #228B22; 
-  padding-top: 5%;
-}
-*/
-
 nav ul.menu li a {
   display: block;
   padding: 8px 12px;
@@ -70,12 +56,7 @@ nav ul.menu li a {
   transition: 0.3s;
 }
 
-
-
 main {
-/*contenuto della pagina, con min-width: 30 em specifico che pu� restringersi fino ad 
-un massimo di 30 caratteri.
- NOTA: impostare a 30 caratteri il minimo per content, (che e' a fianco a navigation, che � largo necessariamente 10 caratteri) e contemporaneamente per header e footer, implica che necessariamente in finestre "piccole" (<40 caratteri) questi elementi saranno non bene allineati (ma poiche' la specifica dell'esercizio richiede cosi', necessario ottemperare */    
   padding:2%;
   padding-bottom:6em; 
   justify-content: center;
@@ -162,8 +143,8 @@ footer {
 /*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
 
 nav ul.menu li a:hover {
-  color: #228B22; 
-  background-color: white; 
+  color: white;
+  background-color: #228B22;
   text-decoration: none; 
 }
 
