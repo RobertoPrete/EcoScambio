@@ -51,7 +51,6 @@ body { background-image: url('img/back2.jpg');
 nav {
   padding: 2% 10%;
   grid-area: nav;
-  /*padding: 2em;*/
 }
 
 nav ul.menu li a {
@@ -61,6 +60,7 @@ nav ul.menu li a {
   text-decoration: none;
   color: #228B22;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 main {
