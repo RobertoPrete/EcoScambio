@@ -11,6 +11,11 @@ header .slogan{
   font-style: italic;
 }
 
+#userInfo{
+  text-align: right;
+  font-size: 0.9em;
+}
+
 body { background-image: url('img/back2.jpg');
   background-size: cover;      /* Riempie tutto lo spazio */
   background-position: center; /* Centra l'immagine */
