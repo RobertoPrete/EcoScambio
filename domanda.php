@@ -43,8 +43,8 @@
     // Se è presente un filtro per la data, aggiunge la condizione alla query
     if ($filter_date && preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $filter_date)) {
         $stmt = $conn->prepare("SELECT ID, NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE DATA >= ?");
-        $filter_date = new DateTime($filter_date); // Crea un oggetto DateTime per formattare la data correttamente
-        $stmt->bind_param("s", $filter_date->format('Y-m-d')); // Associa il filtro della data alla query
+        $filter_date_sql = new DateTime($filter_date); // Crea un oggetto DateTime per formattare la data correttamente
+        $stmt->bind_param("s", $filter_date_sql->format('Y-m-d')); // Associa il filtro della data alla query
     }else if(!preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $filter_date) && $filter_date !== "") {
         // Se è stato fornito un filtro per la data ma non è in un formato valido, mostra un messaggio di errore e reindirizza alla stessa pagina
         echo "<script>
