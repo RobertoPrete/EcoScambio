@@ -121,14 +121,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <legend>Login</legend>
             <label for="user">Username:</label>
             <!-- Campo per l'username, precompilato se salvato nei cookie -->
-            <input type="text" id="user" name="user" value=""><br>
+            <input type="text" id="user" name="user" value="<?= htmlspecialchars($rememberedUser) ?>"><br>
             <!-- Trasforma i caratteri speciali (come < o >) in entità HTML (come &lt; e &gt;). 
             Questo impedisce attacchi di tipo XSS (Cross-Site Scripting), evitando che un utente malintenzionato 
             possa inserire del codice JavaScript maligno nel campo e farlo eseguire dal browser. -->
 
             <label for="pwd">Password:</label>
             <!-- Campo per la password, precompilato se salvata nei cookie -->
-            <input type="password" id="pwd" name="pwd" value=""><br>
+            <input type="password" id="pwd" name="pwd" value="<?= htmlspecialchars($rememberedPwd) ?>"><br>
 
             <!-- Checkbox per l'opzione "Ricordami" -->
             <label><input type="checkbox" name="remember">Rimani collegato</label><br>
