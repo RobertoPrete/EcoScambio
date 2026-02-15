@@ -88,7 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $error = "Credenziali non valide.";
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('login').reset(); // Resetta il form di login
+                document.getElementById('bottoneInvia').addEventListener('click', function() {
+                    document.getElementById('login').reset(); // Resetta il form di login
+                });
             });
             </script>";
         $stmt->close();
