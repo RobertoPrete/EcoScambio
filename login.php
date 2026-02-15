@@ -69,10 +69,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             setcookie("pwd", $password, time() + 72 * 3600);   // Salva la password per 72 ore
             setcookie("tipoUtente", $artigiano_VAR,  time() + 72 * 3600);
         } else {
-            // Se l'opzione "Ricordami" non è selezionata, cancella i cookie esistenti
+            // Se l'opzione "Ricordami" non è selezionata, cancella i cookie esistenti in modo che non rimangano dati sensibili memorizzati nel browser
             setcookie("utente", "", time() - 3600); // Cancella il cookie dell'username
             setcookie("pwd", "", time() - 3600);     // Cancella il cookie della password
-            setcookie("tipoUtente", "", time() - 3600);
+            setcookie("tipoUtente", "", time() - 3600); // Cancella il cookie del tipo di utente
         }
 
         // Chiude lo statement e la connessione al database
@@ -88,7 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
     } else {
-        // Se le credenziali non sono valide, mostra un messaggio di errore
+        // Se le credenziali non sono valide oltre a mostrare un messaggio di errore cancella dai campi di username e password i dati ricordati nei cookie 
+        // in modo che se l'utente è una persona diversa da chi in precedenza ha selezionato "Ricordami", non possa accedere con le credenziali salvate da un altro utente
+
         $error = "Credenziali non valide.";
         $rememberedUser = "";
         $rememberedPwd = "";
