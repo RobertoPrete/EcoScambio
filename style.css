@@ -49,7 +49,7 @@ body { background-image: url('img/back2.jpg');
 }
 
 nav {
-  padding: 2% 2%;
+  padding: 2% 10%;
   grid-area: nav;
   /*padding: 2em;*/
 }
@@ -64,7 +64,7 @@ nav ul.menu li a {
 }
 
 main {
-  padding:2% 2%;
+  padding:2% 10%;
   padding-bottom:6em; 
   justify-content: center;
   grid-area: main;
