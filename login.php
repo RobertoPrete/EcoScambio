@@ -75,6 +75,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->close();
         $conn->close();
 
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('bottoneInvia').addEventListener('click', function() {
+                    document.getElementById('user').value = htmlspecialchars($rememberedUser) ; 
+                    document.getElementById('pwd').value = htmlspecialchars($rememberedPwd);
+                });
+            });
+            </script>";
+
         // Reindirizza l'utente alla pagina appropriata in base al tipo di utente
         if ($artigiano) {
             header("Location: domanda.php"); // Reindirizza alla pagina domanda.php per artigiani
