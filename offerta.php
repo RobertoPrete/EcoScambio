@@ -13,7 +13,6 @@
             window.location.href = 'login.php';
         });
         </script>";
-        //echo "<p>Accesso negato. Per accedere al contenuto di questa pagina devi essere loggato come 'Azienda'.</p>";
         include "footer.php";
         exit;
     }

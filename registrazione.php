@@ -2,6 +2,12 @@
     // Include l'intestazione della pagina
     include "header.php";
 
+    if (isset($_SESSION['id']) && isset($_SESSION['utente'])) {
+        echo "<p>Ehi! Ti sei già registrato e loggato come {$_SESSION['utente']}. Se vuoi registrarti con un altro account, esegui prima il <a href='logout.php' onclick='return confermaLogout()'>logout</a>.</p>";
+        include "footer.php";
+        exit;
+    }
+
     // Inizializza le variabili per gestire errori e messaggi di successo
     $errors = [];
     $success = "";
