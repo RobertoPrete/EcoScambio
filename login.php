@@ -84,8 +84,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit;
         }
     } else {
-        // Se le credenziali non sono valide, mostra un messaggio di errore e resetta i campi di login
+        // Se le credenziali sono errate vorrà dire che qualcuno starà provando ad entrare con credenziali false, 
+        // quindi è meglio eliminare i cookie per evitare che qualcuno possa accedere con credenziali salvate nei cookie.
+        
+        // Se le credenziali non sono valide, mostra un messaggio di errore e resetta i campi di login eliminando i cookie
         $error = "Credenziali non valide.";
+        foreach ($_COOKIE as $nome => $valore) { // Cicla attraverso tutti i cookie presenti
+            setcookie($nome, "", time() - 3600, "/"); // e li elimina impostando una data di scadenza passata (1 ora fa) e il percorso "/"
+        }
         $stmt->close();
         $conn->close();
     }
