@@ -51,7 +51,7 @@
         // Validazione dei dati
         if (!preg_match('/^[A-Za-z0-9 ]{10,40}$/', $nome)) $errors[] = "Nome non valido. Nome deve essere una stringa di minimo 10 caratteri e massimo 40 caratteri, con solo lettere, numeri e spazi.";
         if (strlen($descrizione) > 250) $errors[] = "Descrizione troppo lunga.";
-        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $data)) $errors[] = "Data non valida. Inserire la data nel formato aaaa-mm-gg.";
+        if (!preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $data)) $errors[] = "Data non valida. Inserire la data nel formato aaaa-mm-gg.";
         if (!filter_var($quantita, FILTER_VALIDATE_INT)) $errors[] = "Quantità non valida. Quantità deve essere un numero intero.";
         if (!preg_match('/^\d+(\.\d{1,2})?$/', $costo) || ((int)($costo * 100) % 5 != 0)) $errors[] = "Costo non valido. Costo deve essere espressocon la precisione dei centesimi (ma come valori ammissibili nei centesimi sono ammissibili solo multipli di 5)";
 

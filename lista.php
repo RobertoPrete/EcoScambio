@@ -28,7 +28,7 @@
     $materiali = [];
 
     // Controlla se è stato fornito un filtro per la data e se è in un formato valido (YYYY-MM-DD)
-    if ($dataFiltro && preg_match('/^\d{4}-\d{2}-\d{2}$/', $dataFiltro)) {
+    if ($dataFiltro && preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $dataFiltro)) {
         // Prepara una query SQL per selezionare i materiali filtrati per nome e data
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ? AND DATA >= ?");
         $stmt->bind_param("ss", $nomeFiltro, $dataFiltro); // Associa i parametri alla query
@@ -65,7 +65,7 @@
                 <!-- Campo di input per il filtro sul nome -->
                 <input type="text" name="nome" value="<?= isset($_GET['nome']) ? htmlspecialchars($_GET['nome']) : '' ?>">
             </label>
-            <label>Data di inserimento: 
+            <label>Data di inserimento (aaaa-mm-gg): 
                 <!-- Campo di input per il filtro sulla data -->
                 <input type="text" name="data" value="<?= isset($_GET['data']) ? htmlspecialchars($_GET['data']) : '' ?>">
             </label>
