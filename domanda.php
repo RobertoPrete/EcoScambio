@@ -29,7 +29,6 @@
     $stmt->close();
 
     if (!$isArtigiano) {
-        echo "<p>Benvenuto nella sezione Domanda. Qui puoi visualizzare i materiali di scarto disponibili per l'acquisto, filtrare i risultati in base alla data di inserimento e procedere all'acquisto dei materiali che ti interessano. Assicurati di avere credito sufficiente per completare l'acquisto e di selezionare solo le quantità che desideri acquistare.</p>";
         echo "<p>Solo gli artigiani possono accedere a questa pagina.</p>";
         include "footer.php";
         exit;
