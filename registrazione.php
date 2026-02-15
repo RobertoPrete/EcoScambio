@@ -2,8 +2,11 @@
     // Include l'intestazione della pagina
     include "header.php";
 
+    if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
+        session_start();
+
     if (isset($_SESSION['id']) && isset($_SESSION['utente'])) {
-        echo "<p>Ehi! Ti sei già registrato e loggato come {$_SESSION['utente']}. Se vuoi registrarti con un altro account, esegui prima il <a href='logout.php' onclick='return confermaLogout()'>logout</a>.</p>";
+        echo "<p>Ehi! Ti sei già registrato e loggato come {$_SESSION['utente']}. Se vuoi registrarti con un altro account, esegui prima il <span><a href='logout.php' onclick='return confermaLogout()'>LOGOUT</a></span>.</p>";
         include "footer.php";
         exit;
     }
