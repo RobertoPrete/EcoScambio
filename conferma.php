@@ -110,6 +110,11 @@
             echo "</form>";
             // Form per annullare l'acquisto e tornare alla pagina domanda.php
             echo "<form method='post' action='domanda.php'>";
+            foreach ($quantita_selezionata as $id => $qta) { 
+                if ($qta > 0) {
+                    echo "<input type='hidden' name='quantita[{$id}]' value='{$qta}'>";
+                }
+            } 
             echo "<input type='submit' value='Annulla'>";
             echo "</form>";
         }
