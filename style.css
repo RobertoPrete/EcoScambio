@@ -58,9 +58,7 @@ nav ul.menu li a {
   color: #228B22;
   transition: 0.3s;
 }
- nav ul.menu li a:focus {
-  color: white; background-color: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
-}
+
 
 
 main {
@@ -181,6 +179,10 @@ main {
 footer {
     grid-area: footer;
     padding: 2em;
+}
+
+nav ul.menu li a:hover {
+  color: white; background-color: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
 }
 
 /* Regole per schermi con larghezza massima di 900px */
