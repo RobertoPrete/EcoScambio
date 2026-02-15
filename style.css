@@ -46,9 +46,7 @@ nav ul.menu a {
   color: #228B22; /* Colore del testo */
   padding-top: 5%;
 }
-nav ul.menu a:hover {
-  color: white; background: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
-}
+
 
 main {
 /*contenuto della pagina, con min-width: 30 em specifico che pu� restringersi fino ad 
@@ -168,6 +166,10 @@ main {
 footer {
     grid-area: footer;
     padding: 2em;
+}
+
+nav ul.menu li a:hover {
+  color: white; background: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
 }
 
 /* Regole per schermi con larghezza massima di 900px */
