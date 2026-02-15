@@ -2,17 +2,17 @@ header {
   text-align: center; /* Centra il contenuto dell'intestazione */
   padding: 1px; /* Spaziatura interna */
 }
-header div.userInfo{
-  text-align:right;
-  font-size:0.9em;
-  color: #228B22;
-}
 header.slogan{
   font-size: 1em;
   color: #228B22;
   margin-top: 2px;
   text-align: center; /* Centra lo slogan */
   font-style: italic;
+}
+#userInfo {
+  text-align:right;
+  font-size:0.9em;
+  color: #228B22;
 }
 #logo {
   border: 1px solid white; /* Bordo grigio chiaro */
