@@ -63,12 +63,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $creditQuery->close(); // Chiude lo statement
         }
 
-
         // Se l'opzione "Ricordami" è selezionata, salva i dati nei cookie
         if ($remember) {
             setcookie("utente", $utente, time() + 72 * 3600); // Salva l'username per 72 ore
             setcookie("pwd", $password, time() + 72 * 3600);   // Salva la password per 72 ore
             setcookie("tipoUtente", $artigiano_VAR,  time() + 72 * 3600);
+        }else{
+            $rememberedUser = "";
+            $rememberedPwd = "";
         }
 
         // Chiude lo statement e la connessione al database
@@ -86,6 +88,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Se le credenziali non sono valide, mostra un messaggio di errore
         $error = "Credenziali non valide.";
+        $rememberedUser = "";
+        $rememberedPwd = "";
         $stmt->close();
         $conn->close();
     }
