@@ -1,6 +1,7 @@
 header {
   text-align: center; /* Centra il contenuto dell'intestazione */
   padding: 1px; /* Spaziatura interna */
+  grid-area: header;
 }
 header .slogan{
   font-size: 1em;
@@ -18,7 +19,18 @@ body { background-image: url('img/back2.jpg');
   font-family: Helvetica, Arial, Sans-Serif;  /* Usa un font "senza grazia" per il testo, con pi alternative, ipotizzando condizione normale sia schermo */
   /* Assicurarsi di usare sempre testo con font leggibili e in forte contrasto con lo sfondo*/
   font-size: 100%; 
-  line-height: 110%; color: #228B22;}
+  line-height: 110%; 
+  color: #228B22;
+  margin: 20px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% auto;
+  grid-template-rows: auto;
+  grid-template-areas: 
+      "header header"
+      "nav main"
+      "footer footer";
+}
 
 #logo {
     width: 50%;
@@ -32,7 +44,8 @@ body { background-image: url('img/back2.jpg');
 nav {
   padding: 2%;
   width: 10rem;
-/*menu di navigazione; con 'float: left' specifico che deve trovarsi sul lato sinistro*/
+  grid-area: nav;
+  /*padding: 2em;*/
 }
 
 /*
@@ -68,6 +81,7 @@ un massimo di 30 caratteri.
   min-width: 30rem;
   padding-bottom:6em; 
   justify-content: center;
+  grid-area: main;
 }
 
 span a{
@@ -143,40 +157,11 @@ footer {
   padding-top: 0.3em;   /*per evitare bordo e contenuto del footer si sovrappongano*/
   min-width: 30rem;
   font-style: italic; /* Stile corsivo */
+  grid-area: footer;
+  /*padding: 2em;*/
 } 
 
 /*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 20% auto;
-    grid-template-rows: auto;
-    grid-template-areas: 
-        "header header"
-        "nav main"
-        "footer footer";
-}
-
-header {
-    grid-area: header;
-}
-
-nav {
-    grid-area: nav;
-    padding: 2em;
-}
-
-main {
-    grid-area: main;
-    /*padding: 2em;*/
-}
-
-footer {
-    grid-area: footer;
-    padding: 2em;
-}
 
 nav ul.menu li a:hover {
   color: white; background-color: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
