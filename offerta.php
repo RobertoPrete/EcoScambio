@@ -44,21 +44,22 @@
         // Recupera i dati dal form
         $nome = $_POST['nome'];
         $descrizione = $_POST['descrizione'];
-        $data = new DateTime($_POST['data']); // Crea un oggetto DateTime dalla stringa di input
+        $data = $_POST['data']; 
         $quantita = $_POST['quantita'];
         $costo = $_POST['costo'];
 
         // Validazione dei dati
         if (!preg_match('/^[A-Za-z0-9 ]{10,40}$/', $nome)) $errors[] = "Nome non valido. Nome deve essere una stringa di minimo 10 caratteri e massimo 40 caratteri, con solo lettere, numeri e spazi.";
         if (strlen($descrizione) > 250) $errors[] = "Descrizione troppo lunga.";
-        if (!preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $data->format('Y-m-d'))) $errors[] = "Data non valida. Inserire la data nel formato aaaa-mm-gg.";
+        if (!preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $data)) $errors[] = "Data non valida. Inserire la data nel formato aaaa-mm-gg.";
         if (!filter_var($quantita, FILTER_VALIDATE_INT)) $errors[] = "Quantità non valida. Quantità deve essere un numero intero.";
         if (!preg_match('/^\d+(\.\d{1,2})?$/', $costo) || ((int)($costo * 100) % 5 != 0)) $errors[] = "Costo non valido. Costo deve essere espressocon la precisione dei centesimi (ma come valori ammissibili nei centesimi sono ammissibili solo multipli di 5)";
 
         // Inserisce il materiale nel database se non ci sono errori
         if (empty($errors)) {
             $stmt = $conn->prepare("INSERT INTO MATERIALI (NOME, DESCRIZIONE, DATA, QUANTITA, COSTO, ID_UTENTE) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssidi", $nome, $descrizione, $data->format('Y-m-d'), $quantita, $costo, $_SESSION['id']);
+            $data_sql = new DateTime($data); // Crea un oggetto DateTime per formattare la data correttamente
+            $stmt->bind_param("sssidi", $nome, $descrizione, $data_sql->format('Y-m-d'), $quantita, $costo, $_SESSION['id']);
             $stmt->execute();
             $stmt->close();
             $success = "Materiale inserito con successo.";

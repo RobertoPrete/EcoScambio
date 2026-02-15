@@ -70,18 +70,19 @@
                 else {
                     $name = $_POST['name']; // Nome
                     $surname = $_POST['surname']; // Cognome
-                    $birthdate = new DateTime($_POST['birthdate']); // Data di nascita
+                    $birthdate = $_POST['birthdate']; // Data di nascita
                     $credit = $_POST['credit']; // Credito iniziale
                     $address = $_POST['address']; // Indirizzo
 
                     // Validazione dei dati personali
                     if (preg_match("/^[A-Za-z ]{4,14}$/", $name) &&
                         preg_match("/^[A-Za-z' ]{4,16}$/", $surname) &&
-                        preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate->format('Y-m-d')) &&
+                        preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate) &&
                         preg_match("/^\d+(\.\d{1,2})?$/", $credit) &&
                         ((int)($credit * 100) % 5 === 0)) {
                         $stmtArtigiano = $conn->prepare("INSERT INTO DATI_ARTIGIANI (ID_UTENTE, NAME, SURNAME, BIRTHDATE, CREDIT, ADDRESS) VALUES (?, ?, ?, ?, ?, ?)");
-                        $stmtArtigiano->bind_param("isssds", $userId, $name, $surname, $birthdate->format('Y-m-d'), $credit, $address);
+                        $birthdate_sql = new DateTime($birthdate); // Crea un oggetto DateTime per formattare la data correttamente
+                        $stmtArtigiano->bind_param("isssds", $userId, $name, $surname, $birthdate_sql->format('Y-m-d'), $credit, $address);
                         $stmtArtigiano->execute();
                         $stmtArtigiano->close();
                         $success = "Registrazione artigiano completata.";
@@ -89,7 +90,7 @@
                         $errors[] = "Nome non valido. Deve essere una stringa di minimo 4 e massimo 14 caratteri, con solo lettere ed il carattere spazio come caratteri accettabili.";
                     }else if (!preg_match("/^[A-Za-z' ]{4,16}$/", $surname)) {
                         $errors[] = "Cognome non valido. Deve essere una stringa di minimo 4 e massimo 16 caratteri, con solo lettere ed i caratteri spazio o “’” (apostrofo) come caratteri accettabili.";
-                    }else if (!preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate->format('Y-m-d'))) {
+                    }else if (!preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate)) {
                         $errors[] = "Data di nascita non valida. Deve essere nella forma “aaaa-mm-gg”.";
                     }else if (!preg_match("/^\d+(\.\d{1,2})?$/", $credit) || ((int)($credit * 100) % 5 !== 0)) {
                         $errors[] = "Credito non valido. Deve essere un numero che rappresenta il credito in euro, caricato dagli utenti, con precisione dei centesimi (ma che nei centesimi deve considerare variazioni da 5 unità per volta).";
