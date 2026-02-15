@@ -32,7 +32,11 @@
         // Prepara una query SQL per selezionare i materiali filtrati per nome e data
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ? AND DATA >= ?");
         $stmt->bind_param("ss", $nomeFiltro, $dataFiltro->format('Y-m-d')); // Associa i parametri alla query
-    } else {
+    }else if($dataFiltro==="") {
+        // Prepara una query SQL per selezionare i materiali filtrati solo per nome
+        $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
+        $stmt->bind_param("s", $nomeFiltro); // Associa il parametro alla query}
+    }else {
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
         $stmt->bind_param("s", $nomeFiltro); // Associa il parametro alla query
