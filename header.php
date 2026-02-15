@@ -6,21 +6,27 @@ session_start();
 //$user = isset($_SESSION['user']) ? $_SESSION['user'] : 'non loggato';
 if (isset($_SESSION["utente"]))
     $utente=$_SESSION["utente"];
-else
-    $utente=$_SESSION["utente"]= "non loggato";
+else{
+    $_SESSION["utente"]= "non loggato";
+    $utente=$_SESSION["utente"];
+}
 
 // Recupera il credito dell'utente dalla sessione, se disponibile, altrimenti imposta 0.00
 //$credit = isset($_SESSION['credit']) ? $_SESSION['credit'] : 0.00;
 if (isset($_SESSION["credito"]))
     $credito=$_SESSION["credito"];
-else
-    $credito=$_SESSION["credito"]= 0.00;
+else{
+    $_SESSION["credito"]= 0.00;
+    $credito=$_SESSION["credito"];
+}
 
 //$typeutente = isset($_SESSION['type_utente']) ? $_SESSION['type_utente'] : '';
 if (isset($_SESSION["tipoUtente"]))
     $tipoUtente=$_SESSION["tipoUtente"];
-else
-    $tipoUtente=$_SESSION["tipoUtente"]= "";
+else{
+    $_SESSION["tipoUtente"]= "";
+    $tipoUtente=$_SESSION["tipoUtente"];
+}
 
 ?>
 
