@@ -49,7 +49,7 @@
     echo "<h2>Conclusione</h2>";
     echo "<p class='successo'>Acquisto completato con successo!</p>";
     echo "<form action='domanda.php'>";
-    echo "<input type='submit' value='Torna alla pagina d\'acquisto'>";
+    echo "<input type='submit' value='Torna alla pagina di acquisto'>";
     echo "</form>";
     echo "<form action='home.php'>";
     echo "<input type='submit' value='Torna alla pagina principale'>";
