@@ -41,7 +41,6 @@ else{
         <meta name="keywords" content="eco, economia circolare, sostenibilità, riuso, riciclo, aziende, artigiani"> <!-- Parole chiave -->
         <title>ECOnnectify</title> <!-- Titolo della pagina -->
         <link rel="stylesheet" href="style.css"> <!-- Collegamento al file CSS -->
-        <!--<link rel="icon" type="image/jpeg" href="img/poli.jpeg">!--> <!-- Inserisce la favicon -->
         <script>
             function confermaLogout() { 
                 return confirm('Sei sicuro di voler uscire?')
@@ -53,7 +52,7 @@ else{
         <header>
                 <?php
                 //Mostra il nome dell'utente e il credito disponibile in alto a destra
-                echo "<div style='text-align:right; font-size:0.9em;'>Utente: $utente | Credito: € " . number_format($credito, 2) . "</div>";
+                echo "<div class='userInfo'>Utente: $utente | Credito: € " . number_format($credito, 2) . "</div>";
                 ?>
                 <h1><a href="home.php"><img id="logo" src="img/logo1.jpg" alt="logo ECOnnectify"></a></h1>
                 <p class='slogan'>"Dallo scarto al valore: il futuro è sostenibile."</p>             
@@ -74,10 +73,6 @@ else{
                         echo "<li><a href='logout.php' onclick='return confermaLogout()'>LOGOUT</a></li>"; // mostro l'opzione per fare il logout sono se è stato fatto il login
                 ?>
             </ul>
-        </nav> <!--Aggiunge una linea orizzontale sotto il menu di navigazione-->
-
-        <!--Commento per un link opzionale alla pagina "CONFERMA", da riattivare se necessario
-        <a href='conferma.php'>CONFERMA</a> |  per lo spazio CONFERMA, se dovesse essere necessario riaggiungerlo -->
-
+        </nav>
     </body>
 </html>

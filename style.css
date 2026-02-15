@@ -2,12 +2,25 @@ header {
   text-align: center; /* Centra il contenuto dell'intestazione */
   padding: 1px; /* Spaziatura interna */
 }
+header div.userInfo{
+  text-align:right;
+  font-size:0.9em;
+  color: #228B22;
+}
 header.slogan{
   font-size: 1em;
   color: #228B22;
   margin-top: 2px;
   text-align: center; /* Centra lo slogan */
   font-style: italic;
+}
+#logo {
+  border: 1px solid white; /* Bordo grigio chiaro */
+  transition: transform 0.3s, border-color 0.3s; /* Aggiunge una transizione per l'effetto hover */
+}
+#logo:hover {
+  transform: scale(1.1); /* Ingrandisce leggermente il logo al passaggio del mouse */
+  border-color: white; /* Cambia il colore del bordo al passaggio del mouse */
 }
 body { background-image: url('img/back2.jpg');
   background-size: cover;      /* Riempie tutto lo spazio */
