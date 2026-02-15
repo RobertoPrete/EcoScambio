@@ -35,16 +35,31 @@ nav {
   width: 10rem;
 /*menu di navigazione; con 'float: left' specifico che deve trovarsi sul lato sinistro*/
 }
+
+/*
 nav ul.menu li{
     padding-top: 5%;
     font-weight: bold;
 }
 
 nav ul.menu a {
-  margin: 10px 10px; /* Spaziatura orizzontale tra i link */
-  text-decoration: none; /* Rimuove la sottolineatura */
-  color: #228B22; /* Colore del testo */
+  margin: 10px 10px;
+  text-decoration: none; 
+  color: #228B22; 
   padding-top: 5%;
+}
+*/
+
+nav ul.menu li a {
+  display: block;
+  padding: 8px 12px;
+  margin : 5px 0;
+  text-decoration: none;
+  color: #228B22;
+  transition: 0.3s;
+}
+ nav ul.menu li a:hover {
+  color: white; background-color: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
 }
 
 
@@ -166,10 +181,6 @@ main {
 footer {
     grid-area: footer;
     padding: 2em;
-}
-
-nav ul.menu li a:hover {
-  color: white; background: #228B22; text-decoration: none /* Colore del testo al passaggio del mouse */
 }
 
 /* Regole per schermi con larghezza massima di 900px */
