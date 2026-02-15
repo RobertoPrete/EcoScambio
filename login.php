@@ -86,6 +86,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Se le credenziali non sono valide, mostra un messaggio di errore
         $error = "Credenziali non valide.";
+        echo "<script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('login').reset(); // Resetta il form di login
+            });
+            </script>";
         $stmt->close();
         $conn->close();
     }
