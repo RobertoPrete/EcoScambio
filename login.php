@@ -68,10 +68,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             setcookie("utente", $utente, time() + 72 * 3600); // Salva l'username per 72 ore
             setcookie("pwd", $password, time() + 72 * 3600);   // Salva la password per 72 ore
             setcookie("tipoUtente", $artigiano_VAR,  time() + 72 * 3600);
-        }/*else{
-            $rememberedUser = "";
-            $rememberedPwd = "";
-        }*/
+        } else {
+            // Se l'opzione "Ricordami" non è selezionata, cancella i cookie esistenti
+            setcookie("utente", "", time() - 3600); // Cancella il cookie dell'username
+            setcookie("pwd", "", time() - 3600);     // Cancella il cookie della password
+            setcookie("tipoUtente", "", time() - 3600);
+        }
 
         // Chiude lo statement e la connessione al database
         $stmt->close();
