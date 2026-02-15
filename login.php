@@ -89,7 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('bottoneInvia').addEventListener('click', function() {
-                    document.getElementById('login').reset(); // Resetta il form di login
+                    document.getElementById('user').value = ''; // Resetta il form di login
+                    document.getElementById('pwd').value = ''; // Resetta il form di login
                 });
             });
             </script>";
