@@ -75,16 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->close();
         $conn->close();
 
-        // Aggiunge uno script JavaScript per precompilare i campi di login con i dati ricordati, se l'opzione "Ricordami" è stata selezionata
-        echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('bottoneInvia').addEventListener('click', function() {
-                    document.getElementById('user').value = htmlspecialchars($rememberedUser) ; 
-                    document.getElementById('pwd').value = htmlspecialchars($rememberedPwd);
-                });
-            });
-            </script>";
-
         // Reindirizza l'utente alla pagina appropriata in base al tipo di utente
         if ($artigiano) {
             header("Location: domanda.php"); // Reindirizza alla pagina domanda.php per artigiani
@@ -96,14 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Se le credenziali non sono valide, mostra un messaggio di errore e resetta i campi di login
         $error = "Credenziali non valide.";
-        echo "<script>
-            document.addEventListener('DOMContentLoaded', function() {
-                document.getElementById('bottoneInvia').addEventListener('click', function() {
-                    document.getElementById('user').value = ''; // Resetta il form di login
-                    document.getElementById('pwd').value = ''; // Resetta il form di login
-                });
-            });
-            </script>";
         $stmt->close();
         $conn->close();
     }
