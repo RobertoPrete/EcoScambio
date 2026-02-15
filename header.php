@@ -3,7 +3,6 @@
 session_start();
 
 // Recupera il nome utente dalla sessione, se disponibile, altrimenti imposta "non loggato"
-//$user = isset($_SESSION['user']) ? $_SESSION['user'] : 'non loggato';
 if (isset($_SESSION["utente"]))
     $utente=$_SESSION["utente"];
 else{
@@ -12,7 +11,6 @@ else{
 }
 
 // Recupera il credito dell'utente dalla sessione, se disponibile, altrimenti imposta 0.00
-//$credit = isset($_SESSION['credit']) ? $_SESSION['credit'] : 0.00;
 if (isset($_SESSION["credito"]))
     $credito=$_SESSION["credito"];
 else{
@@ -20,7 +18,7 @@ else{
     $credito=$_SESSION["credito"];
 }
 
-//$typeutente = isset($_SESSION['type_utente']) ? $_SESSION['type_utente'] : '';
+// Recupera il tipo di utente dalla sessione, se disponibile, altrimenti imposta una stringa vuota
 if (isset($_SESSION["tipoUtente"]))
     $tipoUtente=$_SESSION["tipoUtente"];
 else{
@@ -37,19 +35,18 @@ else{
         <meta charset="UTF-8"> <!-- Specifica la codifica dei caratteri -->
         <meta name="author" content="Roberto Prete">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rende il sito responsive -->
-        <meta name="description" content="Pagina di intestazione della piattaforma ECOnnectify"> <!-- Descrizione del sito -->
+        <meta name="description" content="Pagina di intestazione della piattaforma ECOnnectify"> <!-- Descrizione della pagina di intestazione -->
         <meta name="keywords" content="eco, economia circolare, sostenibilità, riuso, riciclo, aziende, artigiani"> <!-- Parole chiave -->
         <title>ECOnnectify</title> <!-- Titolo della pagina -->
         <link rel="stylesheet" href="style.css"> <!-- Collegamento al file CSS -->
-        <script>
+        <script> /*Funzione JavaScript per confermare il logout dell'utente */
             function confermaLogout() { 
                 return confirm('Sei sicuro di voler uscire?')
             }
         </script>
     </head>
     <body>
-        <!--Genera l'intestazione della pagina con il titolo del sito!-->
-        <header>
+        <header> <!-- Intestazione del sito con logo e slogan e una parte che indica l'utente loggato e il credito disponibile -->
                 <?php
                 //Mostra il nome dell'utente e il credito disponibile in alto a destra
                 echo "<div id='userInfo'>Utente: $utente | Credito: € " . number_format($credito, 2) . "</div>";
@@ -67,10 +64,10 @@ else{
                 <li><a href='offerta.php'>OFFERTA</a> <!-- Link alla pagina per gestire le offerte --></li>
                 <li><a href='domanda.php'>DOMANDA</a> <!-- Link alla pagina per gestire le domande --></li>
                 <li><a href='registrazione.php'>REGISTRA</a> <!-- Link alla pagina di registrazione --></li>
-                <li><a href='login.php'>LOGIN</a><!-- Link alla pagina di login --></li>
+                <li><a href='login.php'>LOGIN</a><!-- Link alla pagina di accesso --></li>
                 <?php
                     if ($utente!=="non loggato")
-                        echo "<li><a href='logout.php' onclick='return confermaLogout()'>LOGOUT</a></li>"; // mostro l'opzione per fare il logout sono se è stato fatto il login
+                        echo "<li><a href='logout.php' onclick='return confermaLogout()'>LOGOUT</a></li>"; // mostro l'opzione per fare il logout solo se è stato fatto il login
                 ?>
             </ul>
         </nav>
