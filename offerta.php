@@ -120,7 +120,7 @@
             <?php foreach ($materiali as $mat): ?>
                 <form method="post">
                     <input type="hidden" name="id" value="<?= $mat['id'] ?>">
-                    <strong><?= htmlspecialchars($mat['nome']) ?></strong> (<?= date("d-m-Y", strtotime($mat['data'])) ?>)<br>
+                    <strong><?= htmlspecialchars($mat['nome']) ?></strong> (<?= $mat['data']?>)<br>
                     Descrizione: <input type="text" name="descrizione" value="<?= htmlspecialchars($mat['descr']) ?>" size="40"><br>
                     Quantità: <input type="text" name="quantita" value="<?= $mat['qta'] ?>"><br>
                     Costo (€): <input type="text" name="costo" value="<?= $mat['costo'] ?>"><br>

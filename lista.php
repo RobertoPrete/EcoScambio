@@ -67,7 +67,7 @@
             </label>
             <label>Data di inserimento: 
                 <!-- Campo di input per il filtro sulla data -->
-                <input type="date" name="data" value="<?= isset($_GET['data']) ? htmlspecialchars($_GET['data']) : '' ?>">
+                <input type="text" name="data" value="<?= isset($_GET['data']) ? htmlspecialchars($_GET['data']) : '' ?>">
             </label>
             <input type="submit" value="Filtra">
         </fieldset>
@@ -84,7 +84,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Descrizione</th>
-                <th>Data (gg-mm-aaaa)</th>
+                <th>Data (aaaa-mm-gg)</th>
                 <?php
                 if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
                     session_start();
@@ -98,7 +98,7 @@
                 <!-- Mostra i dettagli di ogni materiale -->
                 <td><?= htmlspecialchars($m['nome']) ?></td>
                 <td><?= htmlspecialchars($m['descr']) ?></td>
-                <td><?= !empty($m['data']) ? date("d-m-Y", strtotime($m['data'])) : '' ?></td>
+                <td><?= !empty($m['data']) ? $m['data'] : '' ?></td>
                 <?php
                 if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
                     session_start();

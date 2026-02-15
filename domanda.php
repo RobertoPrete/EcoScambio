@@ -119,7 +119,7 @@
     <form method="get">
         <fieldset>
             <legend>Filtro di ricerca</legend>
-            <label>Visualizza materiali dal: <input type="date" name="data" value="<?= htmlspecialchars($filter_date) ?>"></label>
+            <label>Visualizza materiali dal (aaaa-mm-gg): <input type="text" name="data" value="<?= htmlspecialchars($filter_date) ?>"></label>
             <input type="submit" value="Filtra">
         </fieldset>
     </form>
@@ -140,7 +140,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Descrizione</th>
-                        <th>Data</th>
+                        <th>Data (aaaa-mm-gg)</th>
                         <th>Quantità disponibile</th>
                         <th>Costo per pezzo (€)</th>
                         <th>Quantità da acquistare</th>
