@@ -56,6 +56,7 @@
         }
     }
 
+    echo "<main>";
     // Mostra il riepilogo
     echo "<h2>Conferma acquisto</h2>";
     echo "<fieldset><legend>Carrello:</legend>";
@@ -114,5 +115,6 @@
         }
     }
     echo "</fieldset>";
+    echo "</main>";
     include "footer.php";
 ?>
