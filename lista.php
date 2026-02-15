@@ -19,7 +19,7 @@
     // Filtro opzionale per la data
     // Se il parametro 'data' è presente nella query string, lo utilizza per filtrare i risultati
     if (isset($_GET['data'])) {
-        $dataFiltro = new DateTime($_GET['data']); // Utilizza la data fornita per filtrare i risultati
+        $dataFiltro = $_GET['data']; // Utilizza la data fornita per filtrare i risultati
     } else {
         $dataFiltro = ""; // Se non è stata fornita una data, non applica il filtro sulla data
     }
@@ -28,9 +28,10 @@
     $materiali = [];
 
     // Controlla se è stato fornito un filtro per la data e se è in un formato valido (YYYY-MM-DD)
-    if ($dataFiltro && preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $dataFiltro->format('Y-m-d'))) {
+    if ($dataFiltro && preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $dataFiltro)) {
         // Prepara una query SQL per selezionare i materiali filtrati per nome e data
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ? AND DATA >= ?");
+        $dataFiltro = new DateTime($dataFiltro); // Crea un oggetto DateTime per formattare la data correttamente
         $stmt->bind_param("ss", $nomeFiltro, $dataFiltro->format('Y-m-d')); // Associa i parametri alla query
     }else if($dataFiltro==="") {
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
