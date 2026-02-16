@@ -33,77 +33,78 @@
         if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.;+=])[A-Za-z\d.;+=]{8,16}$/", $password))
             $errors[] = "Password non valida. Deve essere una stringa lunga da 8 a 16 caratteri, che può contenere lettere, numeri e caratteri speciali, e deve contenere almeno 1 lettera maiuscola, 1 lettera minuscola, 1 numero e 1 caratteri speciale tra i seguenti (.;+=).";
 
-        // Se non ci sono errori, inserisce l'utente nel database
+        // Validazione dati specifici di azienda o artigiano. Qualora i dati non rispettino le caratteristiche delle regular expression viene memorizzato un messaggio di errore nell'array $errors
+        // Se l'utente è un'azienda recupera i dati aziendali dal form (dai campi relativi alle aziende)
+        if ($type === "azienda") {
+            $ragioneSociale = $_POST['ragione']; // Ragione sociale
+            $indirizzoAziendale = $_POST['address2']; // Indirizzo aziendale
+
+            //Validazione dati aziendali
+            if (!preg_match("/^[A-Z][A-Za-z0-9 &]{0,29}$/", $ragioneSociale))
+                $errors[] = "Ragione sociale non valida. Deve essere una stringa di massimo 30 caratteri, con lettere numeri ed i caratteri “&” e spazio come caratteri accettabili e deve necessariamente iniziare con una lettera maiuscola.";
+            if (!preg_match("/^(Via|Corso) [a-zA-Z ]+ \d{1,3}, [A-Za-z ]+$/", $indirizzoAziendale))
+                $errors[] = "Indirizzo aziendale non valido. Deve essere nella forma “Via/Corso nome numeroCivico, Città”, dove nome può contenere caratteri alfabetici e spazi, numeroCivico deve essere un numero naturale composto da 1 a 3 cifre decimali, Città il nome di una città (o presunta tale).";
+        } else{// Se l'utente è un artigiano recupera i dati degli artigiani dal form (dai campi relativi agli artigiani)
+            $name = $_POST['name']; // Nome
+            $surname = $_POST['surname']; // Cognome
+            $birthdate = $_POST['birthdate']; // Data di nascita
+            $credit = $_POST['credit']; // Credito iniziale
+            $address = $_POST['address']; // Indirizzo
+
+            // Validazione dati artigiano
+            if (!preg_match("/^[A-Za-z ]{4,14}$/", $name)) 
+                $errors[] = "Nome non valido. Deve essere una stringa di minimo 4 e massimo 14 caratteri, con solo lettere ed il carattere spazio come caratteri accettabili."; 
+            if (!preg_match("/^[A-Za-z' ]{4,16}$/", $surname)) 
+                $errors[] = "Cognome non valido. Deve essere una stringa di minimo 4 e massimo 16 caratteri, con solo lettere ed i caratteri spazio o “’” (apostrofo) come caratteri accettabili.";
+            if (!preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate))
+                $errors[] = "Data di nascita non valida. Deve essere nella forma “aaaa-mm-gg”.";
+            if (!preg_match("/^\d+(\.\d{1,2})?$/", $credit))
+                $errors[] = "Credito non valido. Deve essere un numero che rappresenta il credito in euro, caricato dagli utenti, con precisione dei centesimi (ma che nei centesimi deve considerare variazioni da 5 unità per volta).";
+            else
+                if ((int)($credit * 100) % 5 === 0)
+                    $errors[]="Il credito deve avere centesimi multipli di 5.";               
+            if (!preg_match("/^(Via|Corso) [a-zA-Z ]+ \d{1,3}, [A-Za-z ]+$/", $address)) 
+                $errors[] = "Indirizzo non valido. Deve essere nella forma “Via/Corso nome numeroCivico, Città”, dove nome può contenere caratteri alfabetici e spazi, numeroCivico deve essere un numero naturale composto da 1 a 3 cifre decimali, Città il nome di una città (o presunta tale).";
+        }
+
+        //Inserimento dei dati nel database solo se non ci sono errori
         if (empty($errors)) {
-            $stmt = $conn->prepare("INSERT INTO UTENTI (NICK, PASSWORD, ARTIGIANO) VALUES (?, ?, ?)"); //Prepared Statement utile per prevenire SQL injection
             if ($type === "artigiano")
                 $isArtigiano = 1;
             else 
                 $isArtigiano = 0;
+
+            //Inserimento dati utente
+            $stmt = $conn->prepare("INSERT INTO UTENTI (NICK, PASSWORD, ARTIGIANO) VALUES (?, ?, ?)"); //Prepared Statement utile per prevenire SQL injection
             $stmt->bind_param("ssi", $username, $password, $isArtigiano); // Associa i parametri alla query
 
             if ($stmt->execute()) {// Esegue la query e verifica se è stata eseguita con successo.
                 $userId = $stmt->insert_id; // Recupera l'ID dell'utente appena inserito
 
-                // Se l'utente è un'azienda, inserisce i dati aziendali
+                //Inserimento dati specifici (di azienda o artigiano)
                 if ($type === "azienda") {
-                    $ragioneSociale = $_POST['ragione']; // Ragione sociale
-                    $indirizzoAziendale = $_POST['address2']; // Indirizzo aziendale
+                    //Inserimento dati specifici azienda
+                    $stmtAzienda = $conn->prepare("INSERT INTO DATI_AZIENDE (ID_UTENTE, RAGIONE, ADDRESS2) VALUES (?, ?, ?)");
+                    $stmtAzienda->bind_param("iss", $userId, $ragioneSociale, $indirizzoAziendale);
+                    $stmtAzienda->execute();
+                    $stmtAzienda->close();
 
-                    // Validazione dei dati aziendali tramite regulare expression ed eventuale inserimento dei dati tramite sql nel database
-                    if (preg_match("/^[A-Z][A-Za-z0-9 &]{0,29}$/", $ragioneSociale) &&
-                        preg_match("/^(Via|Corso) [a-zA-Z ]+ \d{1,3}, [A-Za-z ]+$/", $indirizzoAziendale)) {
-                        $stmtAzienda = $conn->prepare("INSERT INTO DATI_AZIENDE (ID_UTENTE, RAGIONE, ADDRESS2) VALUES (?, ?, ?)");
-                        $stmtAzienda->bind_param("iss", $userId, $ragioneSociale, $indirizzoAziendale);
-                        $stmtAzienda->execute();
-                        $stmtAzienda->close();
-                        $success = "Registrazione azienda completata.";
-                    //controlli sui dati inseriti in maniera errata e specifica dell'errore/i
-                    }else if (!preg_match("/^[A-Z][A-Za-z0-9 &]{0,29}$/", $ragioneSociale)) {
-                        $errors[] = "Ragione sociale non valida. Deve essere una stringa di massimo 30 caratteri, con lettere numeri ed i caratteri “&” e spazio come caratteri accettabili e deve necessariamente iniziare con una lettera maiuscola.";
-                    }else if (!preg_match("/^(Via|Corso) [a-zA-Z ]+ \d{1,3}, [A-Za-z ]+$/", $indirizzoAziendale)) {
-                        $errors[] = "Indirizzo aziendale non valido. Deve essere nella forma “Via/Corso nome numeroCivico, Città”, dove nome può contenere caratteri alfabetici e spazi, numeroCivico deve essere un numero naturale composto da 1 a 3 cifre decimali, Città il nome di una città (o presunta tale).";
-                    }else {
-                        $errors[] = "Dati azienda non validi. La ragione sociale deve essere una stringa di massimo 30 caratteri, con lettere numeri ed i caratteri “&” e spazio come caratteri accettabili e deve necessariamente iniziare con una lettera maiuscola. Indirizzo deve essere nella forma “Via/Corso nome numeroCivico, Città”, dove nome può contenere caratteri alfabetici e spazi, numeroCivico deve essere un numero naturale composto da 1 a 3 cifre decimali, Città il nome di una città (o presunta tale).";
-                    }
-                } 
-                // Se l'utente è un artigiano, inserisce i dati personali
-                else {
-                    $name = $_POST['name']; // Nome
-                    $surname = $_POST['surname']; // Cognome
-                    $birthdate = $_POST['birthdate']; // Data di nascita
-                    $credit = $_POST['credit']; // Credito iniziale
-                    $address = $_POST['address']; // Indirizzo
+                    $success = "Registrazione azienda completata."; 
+                }else{
+                    //Inserimento dati specifici artigiano
+                    $stmtArtigiano = $conn->prepare("INSERT INTO DATI_ARTIGIANI (ID_UTENTE, NAME, SURNAME, BIRTHDATE, CREDIT, ADDRESS) VALUES (?, ?, ?, ?, ?, ?)");
+                    $birthdate_sql = new DateTime($birthdate); // Crea un oggetto DateTime per formattare la data correttamente
+                    $stmtArtigiano->bind_param("isssds", $userId, $name, $surname, $birthdate_sql->format('Y-m-d'), $credit, $address);
+                    $stmtArtigiano->execute();
+                    $stmtArtigiano->close();
 
-                    // Validazione dei dati personali usando le stesse forme di controllo ed inserimento adottate per i dati aziendali
-                    if (preg_match("/^[A-Za-z ]{4,14}$/", $name) &&
-                        preg_match("/^[A-Za-z' ]{4,16}$/", $surname) &&
-                        preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate) &&
-                        preg_match("/^\d+(\.\d{1,2})?$/", $credit) &&
-                        ((int)($credit * 100) % 5 === 0)) {
-                        $stmtArtigiano = $conn->prepare("INSERT INTO DATI_ARTIGIANI (ID_UTENTE, NAME, SURNAME, BIRTHDATE, CREDIT, ADDRESS) VALUES (?, ?, ?, ?, ?, ?)");
-                        $birthdate_sql = new DateTime($birthdate); // Crea un oggetto DateTime per formattare la data correttamente
-                        $stmtArtigiano->bind_param("isssds", $userId, $name, $surname, $birthdate_sql->format('Y-m-d'), $credit, $address);
-                        $stmtArtigiano->execute();
-                        $stmtArtigiano->close();
-                        $success = "Registrazione artigiano completata.";
-                    }else if (!preg_match("/^[A-Za-z ]{4,14}$/", $name)) {
-                        $errors[] = "Nome non valido. Deve essere una stringa di minimo 4 e massimo 14 caratteri, con solo lettere ed il carattere spazio come caratteri accettabili.";
-                    }else if (!preg_match("/^[A-Za-z' ]{4,16}$/", $surname)) {
-                        $errors[] = "Cognome non valido. Deve essere una stringa di minimo 4 e massimo 16 caratteri, con solo lettere ed i caratteri spazio o “’” (apostrofo) come caratteri accettabili.";
-                    }else if (!preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate)) {
-                        $errors[] = "Data di nascita non valida. Deve essere nella forma “aaaa-mm-gg”.";
-                    }else if (!preg_match("/^\d+(\.\d{1,2})?$/", $credit) || ((int)($credit * 100) % 5 !== 0)) {
-                        $errors[] = "Credito non valido. Deve essere un numero che rappresenta il credito in euro, caricato dagli utenti, con precisione dei centesimi (ma che nei centesimi deve considerare variazioni da 5 unità per volta).";
-                    }else {
-                        $errors[] = "Dati artigiano non validi. Nome deve essere una stringa di minimo 4 e massimo 14 caratteri, con solo lettere ed il carattere spazio come caratteri accettabili. Cognome deve essere una stringa di minimo 4 e massimo 16 caratteri, con solo lettere ed i caratteri spazio o “’” (apostrofo) come caratteri accettabili. Data di nascita deve essere nella forma “aaaa-mm-gg” (dove il valore 0 in posizione più significativa nel mese e nel giorno può eventualmente essere omesso), credito un numero che rappresenta il credito in euro, caricato dagli utenti, con precisione dei centesimi (ma che nei centesimi deve considerare variazioni da 5 unità per volta). ";
-                    }
+                    $success = "Registrazione artigiano completata.";  
                 }
-            } else {
+            }else {
                 $errors[] = "Errore! Utente già esistente o errore di connessione al database.";
             }
 
-            // Chiude lo statement e la connessione
+            //Chiusura statement e connessione
             $stmt->close();
             $conn->close();
         }
