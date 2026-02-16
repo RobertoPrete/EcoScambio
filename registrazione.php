@@ -5,7 +5,8 @@
     if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
         session_start();
 
-    if (isset($_SESSION['id']) && isset($_SESSION['utente'])) {
+
+    if (isset($_SESSION['id']) && isset($_SESSION['utente'])) { // Controlla se si è all'interno di un account mamostra un avviso all'utente loggato
         echo "<p>Ehi! Ti sei già registrato e loggato come {$_SESSION['utente']}. Se vuoi registrarti con un altro account, esegui prima il <span><a href='logout.php' onclick='return confermaLogout()'>LOGOUT</a></span>.</p>";
         include "footer.php";
         exit;
@@ -26,7 +27,7 @@
         $username = $_POST['nick']; // Username
         $password = $_POST['password']; // Password
 
-        // Validazione di username e password
+        // Validazione di username e password tramite le regular expression
         if (!preg_match("/^[a-zA-Z][a-zA-Z0-9_-]{3,9}$/", $username))
             $errors[] = "Username non valido. Username deve essere una stringa lunga da 4 a 10 caratteri, con solo lettere, numeri e - o _ come valori ammessi e deve cominciare con un carattere alfabetico.";
         if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.;+=])[A-Za-z\d.;+=]{8,16}$/", $password))
@@ -34,12 +35,11 @@
 
         // Se non ci sono errori, inserisce l'utente nel database
         if (empty($errors)) {
-            $stmt = $conn->prepare("INSERT INTO UTENTI (NICK, PASSWORD, ARTIGIANO) VALUES (?, ?, ?)"); //Utile per prevenire SQL injection
+            $stmt = $conn->prepare("INSERT INTO UTENTI (NICK, PASSWORD, ARTIGIANO) VALUES (?, ?, ?)"); //Prepared Statement utile per prevenire SQL injection
             if ($type === "artigiano")
                 $isArtigiano = 1;
             else 
                 $isArtigiano = 0;
-            // $isArtigiano = $type === "artigiano" ? 1 : 0; // Determina se l'utente è un artigiano
             $stmt->bind_param("ssi", $username, $password, $isArtigiano); // Associa i parametri alla query
 
             if ($stmt->execute()) {// Esegue la query e verifica se è stata eseguita con successo.
@@ -50,7 +50,7 @@
                     $ragioneSociale = $_POST['ragione']; // Ragione sociale
                     $indirizzoAziendale = $_POST['address2']; // Indirizzo aziendale
 
-                    // Validazione dei dati aziendali
+                    // Validazione dei dati aziendali tramite regulare expression ed eventuale inserimento dei dati tramite sql nel database
                     if (preg_match("/^[A-Z][A-Za-z0-9 &]{0,29}$/", $ragioneSociale) &&
                         preg_match("/^(Via|Corso) [a-zA-Z ]+ \d{1,3}, [A-Za-z ]+$/", $indirizzoAziendale)) {
                         $stmtAzienda = $conn->prepare("INSERT INTO DATI_AZIENDE (ID_UTENTE, RAGIONE, ADDRESS2) VALUES (?, ?, ?)");
@@ -58,6 +58,7 @@
                         $stmtAzienda->execute();
                         $stmtAzienda->close();
                         $success = "Registrazione azienda completata.";
+                    //controlli sui dati inseriti in maniera errata e specifica dell'errore/i
                     }else if (!preg_match("/^[A-Z][A-Za-z0-9 &]{0,29}$/", $ragioneSociale)) {
                         $errors[] = "Ragione sociale non valida. Deve essere una stringa di massimo 30 caratteri, con lettere numeri ed i caratteri “&” e spazio come caratteri accettabili e deve necessariamente iniziare con una lettera maiuscola.";
                     }else if (!preg_match("/^(Via|Corso) [a-zA-Z ]+ \d{1,3}, [A-Za-z ]+$/", $indirizzoAziendale)) {
@@ -74,7 +75,7 @@
                     $credit = $_POST['credit']; // Credito iniziale
                     $address = $_POST['address']; // Indirizzo
 
-                    // Validazione dei dati personali
+                    // Validazione dei dati personali usando le stesse forme di controllo ed inserimento adottate per i dati aziendali
                     if (preg_match("/^[A-Za-z ]{4,14}$/", $name) &&
                         preg_match("/^[A-Za-z' ]{4,16}$/", $surname) &&
                         preg_match("/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/", $birthdate) &&
@@ -108,7 +109,7 @@
         }
     }
 ?>
-<main>
+<main> <!-- Contenuto principale della pagina di registrazione che presenta eventuali messaggi di errore o successo di inserimento dei dati. Presenta inoltre il form di registrazione-->
     <h2>Pagina di registrazione</h2>
 
     <!-- Mostra eventuali errori -->
@@ -119,21 +120,25 @@
 
     <!-- Form di registrazione -->
     <form name="form_registrazione" id="form_registrazione" method="post">
-        <fieldset> 
+        <fieldset> <!-- raggruppamento per migliorare accessibilità e struttura visiva-->
             <legend>Utente</legend>
+
+            <!-- campo per selezionare che tipo di utente si vuole registrare-->
             <label for="type">Seleziona tipo di utente</label>
             <select name="type" id="type" required>
                 <option value="" disabled selected>-- Seleziona --</option>
                 <option value="azienda">Azienda</option>
                 <option value="artigiano">Artigiano</option>
             </select>
-
-            <div class="campiRegistrazione" id="azienda">
+            
+            <!-- campi di regsitrazione per un'azienda-->
+            <div class="campiRegistrazione" id="azienda"> 
                 <label>Ragione Sociale: <input type="text" name="ragione"></label><br>
                 <label>Indirizzo (Via/Corso ...): <input type="text" name="address2"></label><br>
             </div>
 
-            <div class="campiRegistrazione" id="artigiano">
+            <!-- campi di registrazione per un artigiano-->
+            <div class="campiRegistrazione" id="artigiano"> 
                 <label>Nome: <input type="text" name="name"></label><br>
                 <label>Cognome: <input type="text" name="surname"></label><br>
                 <label>Data di nascita (aaaa-mm-gg): <input type="text" name="birthdate"></label><br>
@@ -141,17 +146,20 @@
                 <label>Indirizzo: <input type="text" name="address"></label><br>
             </div>
 
+            <!-- campi in comune per azienda e artigiano, necessari per la registrazione-->
             <div class="campiRegistrazione" id="nickPassword">
                 <label>Username: <input type="text" id="nick" name="nick" required></label><br>
                 <label>Password: <input type="password" id="password" name="password" required></label><br>
             </div>
+
+            <!--pulsante per confermare l'inserimento dei dati nel database dopo averne verificato la correttezza secondo le logiche di controllo attuate nella parte superiore del codice-->
             <input type="submit" value="REGISTRA">
         </fieldset>
     </form>
 
-    <!-- Script per mostrare i campi in base al tipo di utente selezionato -->
+    <!-- Script per mostrare i campi di registrazione in base al tipo di utente selezionato -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function() { // Permette di eseguire il codice all'interno solo quando il documento HTML è stato completamente analizzato e tutti gli script differiti sono stati scaricati ed eseguiti.
             document.getElementById("type").addEventListener("change", function(){
                 document.getElementById("azienda").style.display = this.value === "azienda" ? "block" : "none";
                 document.getElementById("artigiano").style.display = this.value === "artigiano" ? "block" : "none";

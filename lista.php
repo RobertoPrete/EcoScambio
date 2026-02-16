@@ -1,5 +1,5 @@
 <?php
-    // Include l'intestazione della pagina, che contiene il titolo, i link CSS e il menu di navigazione
+    // Include l'intestazione della pagina
     include "header.php";
 
     // Connessione al database MySQL con credenziali specifiche
@@ -16,7 +16,7 @@
         $nomeFiltro = "%"; // Se non è stato fornito un filtro, mostra tutti i materiali
     }
 
-    // Filtro opzionale per la data
+    // Filtro per la data
     // Se il parametro 'data' è presente nella query string, lo utilizza per filtrare i risultati
     if (isset($_GET['data'])) {
         $dataFiltro = $_GET['data']; // Utilizza la data fornita per filtrare i risultati
@@ -41,11 +41,11 @@
                 window.location.href = 'lista.php';
             });
             </script>";
-    }else if($dataFiltro==="") {
+    }/*else if($dataFiltro==="") { 
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
         $stmt->bind_param("s", $nomeFiltro); // Associa il parametro alla query}
-    }else {
+    }*/else {
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
         $stmt->bind_param("s", $nomeFiltro); // Associa il parametro alla query
