@@ -41,11 +41,11 @@
                 window.location.href = 'lista.php';
             });
             </script>";
-    }/*else if($dataFiltro==="") { 
+    }else if($dataFiltro==="") { 
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
         $stmt->bind_param("s", $nomeFiltro); // Associa il parametro alla query}
-    }*/else {
+    }else {
         // Prepara una query SQL per selezionare i materiali filtrati solo per nome
         $stmt = $conn->prepare("SELECT NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE NOME LIKE ?");
         $stmt->bind_param("s", $nomeFiltro); // Associa il parametro alla query
@@ -67,13 +67,13 @@
 ?>
 
 
-<main>
+<main> <!-- Contenuto principale della pagina lista.php dove troviamo un form composto da due input che fanno da filtro per la ricerca e dalla lista dei materiali filtrati recuperati dal database-->
     <h2>Lista materiali</h2>
 
     <!-- Form per filtrare i materiali in base al nome e alla data -->
     <form method="get">
-        <fieldset>
-            <legend>Filtri di ricerca</legend>
+        <fieldset> <!-- raggruppamento visivo filtri di ricerca-->
+            <legend>Filtri di ricerca</legend> <!-- legenda raggruppamento-->
             <label>Nome materiale: 
                 <!-- Campo di input per il filtro sul nome -->
                 <input type="text" name="nome" value="<?= isset($_GET['nome']) ? htmlspecialchars($_GET['nome']) : '' ?>">
@@ -82,6 +82,7 @@
                 <!-- Campo di input per il filtro sulla data -->
                 <input type="text" name="data" value="<?= isset($_GET['data']) ? htmlspecialchars($_GET['data']) : '' ?>">
             </label>
+            <!-- bottone per filtrare i dati-->
             <input type="submit" value="Filtra">
         </fieldset>
     </form>
@@ -101,14 +102,14 @@
                 <?php
                 if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
                     session_start();
-                if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] === "Artigiano") {
-                    echo "<th>Quantità</th><th>Costo unitario €</th>";
+                if (isset($_SESSION["tipoUtente"]) && $_SESSION["tipoUtente"] === "Artigiano") { // controlla che l'utente loggato sia un artigiano
+                    echo "<th>Quantità</th><th>Costo unitario €</th>";                           // in tal caso mostra anche la colonna quantità e costo unitario del materiale
                 }
                 ?>
             </tr>
-            <?php foreach ($materiali as $m): ?>
+            <?php foreach ($materiali as $m): ?> <!-- va a recuperare i dati dei materiali, recuperati in precedenza dal database (vedere nella parte alta del codice), memorizzati all'interno dell'array $materiali-->
             <tr>
-                <!-- Mostra i dettagli di ogni materiale -->
+                <!-- Mostra i dettagli di ogni materiale, inserendoli nelle celle della tabella-->
                 <td><?= htmlspecialchars($m['nome']) ?></td>
                 <td><?= htmlspecialchars($m['descr']) ?></td>
                 <td><?= !empty($m['data']) ? $m['data'] : '' ?></td>

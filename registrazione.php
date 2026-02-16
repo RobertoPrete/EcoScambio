@@ -22,7 +22,7 @@
         $conn = new mysqli("localhost", "modificatore", "Str0ng#Admin9", "eco_scambio");
         if ($conn->connect_error) die("Connessione fallita: " . $conn->connect_error);
 
-        // Recupera i dati inviati dal modulo
+        // Recupera i dati inviati dal modulo.
         $type = $_POST['type']; // Tipo di utente (azienda o artigiano)
         $username = $_POST['nick']; // Username
         $password = $_POST['password']; // Password
@@ -119,9 +119,9 @@
     <?php if ($success) echo "<p class='successo'>$success</p>"; ?>
 
     <!-- Form di registrazione -->
-    <form name="form_registrazione" id="form_registrazione" method="post">
+    <form name="form_registrazione" id="form_registrazione" method="post"> <!-- Importante uso del metodo POST e non GET per non mostrare in chiaro nell'URL dati che potrebbero essere sensibili o di grande volume-->
         <fieldset> <!-- raggruppamento per migliorare accessibilità e struttura visiva-->
-            <legend>Utente</legend>
+            <legend>Utente</legend> <!-- legenda del raggruppamento-->
 
             <!-- campo per selezionare che tipo di utente si vuole registrare-->
             <label for="type">Seleziona tipo di utente</label>

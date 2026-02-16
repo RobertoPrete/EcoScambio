@@ -1,11 +1,11 @@
 <?php
-    // Include l'intestazione della pagina e avvia la sessione
+    // Include l'intestazione della pagina
     include "header.php";
 
     if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
         session_start();
 
-    // Controlla se l'utente è loggato
+    // Controlla se l'utente è loggato se non lo è mostra un alert e reinderizza alla pagina di login
     if (!isset($_SESSION['id']) || !isset($_SESSION['utente'])) {
         echo "<script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -21,7 +21,7 @@
     $conn = new mysqli("localhost", "modificatore", "Str0ng#Admin9", "eco_scambio");
     if ($conn->connect_error) die("Connessione fallita: " . $conn->connect_error);
 
-    // Controlla se l'utente è un'azienda
+    // Controlla se l'utente è un'azienda recuperando i dati dal database secondo l'id memorizzato nella sessione
     $stmt = $conn->prepare("SELECT ARTIGIANO FROM UTENTI WHERE ID = ?");
     $stmt->bind_param("i", $_SESSION['id']);
     $stmt->execute();
@@ -29,7 +29,7 @@
     $stmt->fetch();
     $stmt->close();
 
-    if ($isArtigiano) {
+    if ($isArtigiano) { //se l'utente è un artigiano mostra un messaggio all'utente senza mostrare il contenuto della pagina
         echo "<p>Solo le aziende possono accedere a questa pagina.</p>";
         include "footer.php";
         exit;
@@ -48,7 +48,7 @@
         $quantita = $_POST['quantita'];
         $costo = $_POST['costo'];
 
-        // Validazione dei dati
+        // Validazione dei dati ed eventuale memorizzazione di messaggi di errore nell'array $errors
         if (!preg_match('/^[A-Za-z0-9 ]{10,40}$/', $nome)) $errors[] = "Nome non valido. Nome deve essere una stringa di minimo 10 caratteri e massimo 40 caratteri, con solo lettere, numeri e spazi.";
         if (strlen($descrizione) > 250) $errors[] = "Descrizione troppo lunga.";
         if (!preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $data)) $errors[] = "Data non valida. Inserire la data nel formato aaaa-mm-gg.";
@@ -74,7 +74,7 @@
         $quantita = $_POST['quantita'];
         $costo = $_POST['costo'];
 
-        // Validazione dei dati
+        // Validazione dei dati ed eventuale memorizzazione di messaggi di errore nell'array $errors
         if (strlen($descrizione) > 250) $errors[] = "Descrizione troppo lunga.";
         if (!filter_var($quantita, FILTER_VALIDATE_INT)) $errors[] = "Quantità non valida.";
         if (!preg_match('/^\d+(\.\d{1,2})?$/', $costo) || ((int)($costo * 100) % 5 != 0)) $errors[] = "Costo non valido.";
@@ -89,7 +89,7 @@
         }
     }
 
-    // Recupera l'elenco dei materiali dell'azienda
+    // Recupera l'elenco dei materiali dell'azienda interrogando il database e memorizzando i risultati nell'array $materiali
     $materiali = [];
     $res = $conn->prepare("SELECT ID, NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE ID_UTENTE = ?");
     $res->bind_param("i", $_SESSION['id']);
@@ -102,8 +102,10 @@
 ?>
 
 
-<main>
+<main> <!-- Contenuto principale della pagina offerta.php. Presentazione del contenuto della pagina, eventuali messaggi di errore o successo e due raggruppamenti con all'interno dei form. Un raggruppamento è dedicato a materiali (modificabili nelle caratteristiche) inseriti in precedenza dall'azienda loggata e uno dedicato all'inserimento di nuovo materiale da offrire.-->
     <h2>Offerta</h2>
+
+    <!--Presentazione contenuto della pagina-->
     <p>Benvenuto nella sezione Offerta. Qui puoi inserire i materiali di scarto che la tua azienda desidera vendere oppure aggiornare quelli inseriti in precedenza. Assicurati di fornire informazioni accurate e dettagliate.</p>
 
     <!-- Mostra eventuali errori -->
@@ -112,11 +114,12 @@
     <!-- Mostra messaggio di successo -->
     <?php if ($success) echo "<p class='successo'>$success</p>"; ?>
 
+    <!--Primo raggruppamento che presenta form con i materiali inseriti in tempi precedenti dall'azienda loggata con la possibilità di modificarne le caratteristiche-->
     <fieldset>
         <legend>Materiali offerti</legend>
-        <?php if (empty($materiali)): ?>
+        <?php if (empty($materiali)): ?> <!-- mostra un messaggio all'azienda nel caso in cui non ha aggiunto materiali in passato-->
             <p>Non hai ancora inserito materiali. Usa il form sottostante per aggiungere la tua prima offerta.</p>
-        <?php else: ?>
+        <?php else: ?> <!-- caso in cui risultano nel database materiali aggiunti dall'azienda-->
             <!-- Form per aggiornare i materiali esistenti -->
             <?php foreach ($materiali as $mat): ?>
                 <form method="post">
@@ -131,7 +134,7 @@
         <?php endif; ?>
     </fieldset>  
 
-    
+    <!-- Secondo raggruppamento che presenta un form per inserire un nuovo materiale di scarto da parte dell'azienda loggata-->
     <fieldset>
         <legend>Nuovo materiale</legend>
         <!-- Form per inserire un nuovo materiale -->
