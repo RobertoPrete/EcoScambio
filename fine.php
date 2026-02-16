@@ -42,10 +42,11 @@
     $conn->commit();
 
     // Aggiorna il credito nella sessione
-    // Aggiorna il valore del credito dell'utente nella sessione per riflettere il nuovo saldo
+    // Aggiorna il valore del credito dell'utente nella sessione per riflettere il nuovo credito
     $_SESSION['credito'] -= $costo_totale;
 
-    echo "<main>";
+    //Contenuto principale della pagina fine.php che contiene il messaggio di successo per aver completato l'acquisto e permette di tornare alla pagina di acquisto o al menù principale
+    echo "<main>"; 
     echo "<h2>Conclusione</h2>";
     echo "<p class='successo'>Acquisto completato con successo!</p>";
     echo "<form action='domanda.php'>";

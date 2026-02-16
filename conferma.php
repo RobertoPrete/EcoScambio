@@ -1,5 +1,5 @@
-<!-- filepath: /Applications/XAMPP/xamppfiles/htdocs/eco_site_esame_v1.7/conferma.php -->
 <?php
+    // Include l'intestazione della pagina
     include "header.php";
     if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
         session_start();
@@ -38,7 +38,7 @@
                 ];
                 $costo_totale += $qta * $prezzo; // Aggiorna il costo totale
             }
-            else{ //non so se funziona questo else ma ci provo. Se la quantità richiesta è maggiore di quella disponibile, mostra un messaggio di errore e reindirizza alla pagina domanda.php
+            else{ //Se la quantità richiesta è maggiore di quella disponibile, mostra un messaggio di errore e reindirizza alla pagina domanda.php
                 echo "<script>
                     document.addEventListener('DOMContentLoaded', function() {
                         alert('Quantità richiesta per il materiale \"$nome\" non disponibile. Quantità massima disponibile: $qta_disp.');
@@ -49,6 +49,7 @@
         }
     }
 
+    //Contenuto principale della pagina conferma.php, che contiene il riepilogo dei materiali selezionati per l'acquisto
     echo "<main>";
         // Mostra il riepilogo
         echo "<h2>Conferma acquisto</h2>";

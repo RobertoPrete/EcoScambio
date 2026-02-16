@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION['utente'] = $utente; // Salva l'username nella sessione
         $_SESSION['id'] = $id;     // Salva l'ID utente nella sessione
         $artigiano_VAR = "Azienda";
-        $_SESSION['tipoUtente'] = $artigiano_VAR;
+        $_SESSION['tipoUtente'] = $artigiano_VAR; // Salva il tipo di utente nella sessione
        
         // Se l'utente è un artigiano, recupera il credito associato
         if ($artigiano) {
@@ -99,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
-<main>
+<main> <!-- Contenuto principale della pagina login.php. Se presente mostra errore di autenticazione, contiene un form con due input dove poter inserire le credenziali di accesso e un bottone nel caso in cui si volesse mantenere memorizzato l'accesso. -->
     <h2>Pagina di accesso</h2>
 
     <!-- Mostra un messaggio di errore, se presente -->

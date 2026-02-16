@@ -1,42 +1,44 @@
+/*Stile per intestazione della pagina*/
 header {
   text-align: center; /* Centra il contenuto dell'intestazione */
   padding: 1px; /* Spaziatura interna */
-  grid-area: header;
+  grid-area: header; /*Assegna l'elemento all'area 'header' della griglia*/
 }
 header .slogan{
-  font-size: 1em;
-  color: #228B22;
-  margin-top: 2px;
+  font-size: 1em; /*Dimensione testo standardard*/
+  color: #228B22; /*Colore verde foresta*/
+  margin-top: 2px; /*Distanza dal logo sopra*/
   text-align: center; /* Centra lo slogan */
-  font-style: italic;
+  font-style: italic; /*Testo in corsivo*/
 }
-
 #userInfo{
-  text-align: right;
-  font-size: 0.9em;
+  text-align: right; /*Allinea l'elemento #userInfo a destra*/
+  font-size: 0.9em; /*Testo leggermente più piccolo dalla dimensione standard*/
 }
 
-body { background-image: url('img/back2.jpg');
+/*Qui verrà definita la CSS Grid, l'ossatura della pagina*/
+body { background-image: url('img/back2.jpg'); /*Immagine di sfondo*/
   background-size: cover;      /* Riempie tutto lo spazio */
   background-position: center; /* Centra l'immagine */
-  background-repeat: no-repeat;
-  min-height: 100vh; background-color: #8FBC8F; 
-  font-family: Helvetica, Arial, Sans-Serif;  /* Usa un font "senza grazia" per il testo, con pi alternative, ipotizzando condizione normale sia schermo */
-  /* Assicurarsi di usare sempre testo con font leggibili e in forte contrasto con lo sfondo*/
+  background-repeat: no-repeat; /* Non ripete l'immagine*/
+  min-height: 100vh; /*Altezza minima pari a tutta la finestra*/
+  background-color: #8FBC8F; /*se l'immagine non carica imposta lo sfondo a verde acqua scuro*/
+  font-family: Helvetica, Arial, Sans-Serif;  /* Usa un font "senza grazia" per il testo*/
   font-size: 100%; 
   line-height: 110%; 
   color: #228B22;
-  margin: 20px;
+  margin: 20px; /*margine esterno della pagina*/
   padding: 0;
-  display: grid;
-  grid-template-columns: 30% 70%;
-  grid-template-rows: auto;
-  grid-template-areas: 
-      "header header"
-      "nav main"
-      "footer footer";
+  display: grid; /*Attiva il layout a griglia*/
+  grid-template-columns: 30% 70%; /*La griglia sarà composta da due colonne. Quella di sinistra occuperà il 30% e quella di destra il 70%*/
+  grid-template-rows: auto; /*Le righe non vengono definite, si adatteranno al contenuto*/
+  grid-template-areas: /* La struttura della griglia che dà la struttura alla pagina*/
+      "header header"  /* Header occuperà la prima riga ed entrambe le colonne*/
+      "nav main"       /*Nav e main occuperanno la seconda riga. Nav a sinistra e Main a destra*/
+      "footer footer"; /*Footer lo troveremo in unltima riga ed occuperà entrambe le colonne*/
 }
 
+/*Logo e animazioni*/
 #logo {
     width: 50%;
     height: auto;
@@ -44,30 +46,32 @@ body { background-image: url('img/back2.jpg');
     max-height: 180px; /* Limita la larghezza massima del logo */
     display: block;
     margin: 0 auto; /* Centra il logo orizzontalmente */
-    border: 1px solid white; /* Bordo grigio chiaro */
-    transition: transform 0.3s, border-color 0.3s;
+    border: 1px solid white; /* Bordo bianco */
+    transition: transform 0.3s, border-color 0.3s; /*Animazione fluida di 0.3 secondi*/
 }
 
 #logo:hover {
-    transform: scale(1.1); /* Ingrandisce leggermente il logo al passaggio del mouse */
+    transform: scale(1.1); /* Ingrandisce leggermente il logo al passaggio del mouse (effetto zoom)*/
     border-color: white; /* Cambia il colore del bordo al passaggio del mouse */
 }
 
+/*Navigazione e menù*/
 nav {
-  padding: 2% 10%;
-  grid-area: nav;
+  padding: 2% 10%; /*Spaziatura interna 2% sopra e sotto e 10% a destra e sinistra*/
+  grid-area: nav; /*Assegna l'elemento all'area 'nav' della griglia*/
 }
 
 nav ul.menu li a {
-  display: block;
+  display: block; /*vengono settati come un blocco che può essere cliccato*/
   padding: 8px 12px;
-  margin : 5px 0;
-  text-decoration: none;
+  margin : 5px 0; /*come il padding i due numeri rappresentano le misure di distanza di sopra, sotto e di sinistra, destra*/
+  text-decoration: none; /*rimuove la sottolineatura dei link*/
   color: #228B22;
   transition: 0.3s;
-  font-weight: bold;
+  font-weight: bold; /*testo in grassetto*/
 }
 
+/*Contenuto principale delle pagine*/
 main {
   padding:2% 10%;
   padding-bottom:6em; 
@@ -75,26 +79,26 @@ main {
   grid-area: main;
 }
 
+
+/*Elementi che compaiono spesso nelle varie pagine*/
+/*Stile di parti di testo usati come collegamenti ipertestuali per arrivare ad altre pagine*/
 span a{
   color: #228B22; /* Colore del testo */
   text-decoration: none; /* Rimuove la sottolineatura */
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
-
-
-/* Stile per i tag all'interno del main di registrazione.php */
+/*Stile per messaggi di errore o successo*/
 p.errori{
   color: red; /* Colore del testo rosso per gli errori */
   font-weight: bold; /* Rende il testo in grassetto */
 }
-
 p.successo{
   color: blue; /* Colore del testo verde per i successi */
   font-weight: bold; /* Rende il testo in grassetto */
 }
 
-/* Stile per i campi del form diregistrazione.php */
+/* Stile per le etichette dei raggruppamenti presenti nelle pagine*/
 legend {
   background-color: white;
   padding: 3px 8px; 
@@ -102,28 +106,34 @@ legend {
   font-weight: bold; 
 }
 
+/*stile specifico per una parte dei campi di registrazione*/
 div.campiRegistrazione{
   display: none; /* Nasconde i campi di registrazione specifici per azienda e artigiano, che saranno mostrati solo dopo la selezione del tipo di utente */
 }
 
+/*Stile per i campi di inserimento dei dati*/
 input {
   margin: 2px; /* Spaziatura interna dei campi di input */
   padding: 2px; /* Spaziatura interna dei campi di input */
 }
 
-/* Stile per la lista dei materiali*/
+
+/*Tabelle e celle*/
 table, th, td {
   border: 1px solid #228B22;
 }
 
+/*dati della tabella della pagina lista.php*/
+/*Ho voluto specificare degli elementi di stile perchè contiene parecchie informazioni e volevo rendere la visibilità migliore*/
 table.materialiLista {
   margin-top: 2%;
-  border-spacing: 2px; 
-  border-collapse: separate;
+  border-spacing: 2px;  /*spazio tra i bordi delle celle adiacenti*/
+  border-collapse: separate; /*mantiene i bordi separati*/
   table-layout: auto; /* Permette alla tabella di adattarsi al contenuto */
   width: 100%; /* La tabella occupa tutta la larghezza disponibile */
 }
 
+/*celle di intestazione*/
 table.materialiLista th {
   padding:1%;
   font-weight: bold;
@@ -132,6 +142,7 @@ table.materialiLista th {
   width: auto; /* Permette alle celle di adattarsi al contenuto */
 }
 
+/*celle dei dati*/
 table.materialiLista td {
   padding: 1%;
   text-align: left;
@@ -140,37 +151,38 @@ table.materialiLista td {
 }
 
 
+/*Stile per il footer*/
 footer { 
   font-family: "Times New Roman", Georgia, Serif; 
   font-style: italic; 
   font-size: 0.8em; 
   border-top: 0.3em solid black; /*specifico il bordo grigio spesso solo per il bordo superiore*/
   padding-top: 0.3em;   /*per evitare bordo e contenuto del footer si sovrappongano*/
-  min-width: 30rem;
+  min-width: 30rem; /*imposta la larghezza minima*/
   font-style: italic; /* Stile corsivo */
-  grid-area: footer;
+  grid-area: footer; /*Assegna l'elemento all'area 'footer' della griglia*/
   padding: 2em;
 } 
 
-/*Layout a griglia per la pagina, con header e footer che occupano tutta la larghezza, e nav e main affiancati*/
 
-nav ul.menu li a:hover {
+/*Effetti di hover e active sui link del menu*/
+nav ul.menu li a:hover { /*quando ci passi sopra con il mouse*/
   color: white;
   background-color: #228B22;
   text-decoration: none; 
 }
-
-nav ul.menu li a:active {
+nav ul.menu li a:active { /*quando clicchi sul link e non lo lasci*/
   color: white;
   background-color: #006400;
   text-decoration: none; 
 }
 
+
 /* Regole per schermi con larghezza massima di 900px */
 @media (max-width: 900px) {
     body {
-        grid-template-columns: auto;
-        grid-template-areas: 
+        grid-template-columns: auto; /*visualizzazione a griglia di una sola colonna*/
+        grid-template-areas:  /* gli elementi si impilano uno sopra l'altro*/
             "header"
             "nav"
             "main"
