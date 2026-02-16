@@ -1,11 +1,11 @@
 <?php
-    // Include l'intestazione della pagina e avvia la sessione
+    // Include l'intestazione della pagina
     include "header.php";
     if (session_status() === PHP_SESSION_NONE) // Verifica lo stato attuale: se la sessione non esiste (PHP_SESSION_NONE), la avvia; altrimenti, non fa nulla ed evita errori.
         session_start();
 
-    // Controlla se l'utente è loggato e ha i permessi per accedere alla pagina
-    if (!isset($_SESSION['id']) || !isset($_SESSION['utente']) || !isset($_SESSION['credito'])) { // fare un controllo successivo quando faccio login con tipo utente uguale ad aziedn
+    // Controlla se l'utente è loggato se non lo è mostra un alert e reinderizza alla pagina di login 
+    if (!isset($_SESSION['id']) || !isset($_SESSION['utente']) || !isset($_SESSION['credito'])) {
         echo "<script>
             document.addEventListener('DOMContentLoaded', function() {
                 alert('Attenzione! Questa pagina è riservata agli artigiani registrati. Inserisci le credenziali prima di procedere all\'acquisto.');
@@ -20,7 +20,7 @@
     $conn = new mysqli("localhost", "modificatore", "Str0ng#Admin9", "eco_scambio");
     if ($conn->connect_error) die("Connessione fallita: " . $conn->connect_error);
 
-    // Controlla se l'utente è un artigiano
+    // Controlla se l'utente è un artigiano interrogando il database
     $stmt = $conn->prepare("SELECT ARTIGIANO FROM UTENTI WHERE ID = ?");
     $stmt->bind_param("i", $_SESSION['id']);
     $stmt->execute();
@@ -28,7 +28,7 @@
     $stmt->fetch();
     $stmt->close();
 
-    if (!$isArtigiano) {
+    if (!$isArtigiano) { // se l'utente è un' azienda mostra un messaggio all'utente senza mostrare il contenuto della pagina
         echo "<p>Solo gli artigiani possono accedere a questa pagina.</p>";
         include "footer.php";
         exit;
@@ -41,6 +41,8 @@
 
     // Prepara la query SQL per recuperare i materiali
     // Se è presente un filtro per la data, aggiunge la condizione alla query
+
+    //Verifica se è stato fornito un filtro per la data e se è valido
     if ($filter_date && preg_match('/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/', $filter_date)) {
         $stmt = $conn->prepare("SELECT ID, NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI WHERE DATA >= ?");
         $filter_date_sql = new DateTime($filter_date); // Crea un oggetto DateTime per formattare la data correttamente
@@ -53,7 +55,7 @@
                 window.location.href = 'domanda.php';
             });
             </script>";
-    }else {
+    }else { //Se non è sato fornito il filtro della data va a recuperare dal database tutti i materiali
         $stmt = $conn->prepare("SELECT ID, NOME, DESCRIZIONE, DATA, QUANTITA, COSTO FROM MATERIALI");
     }
 
@@ -67,7 +69,7 @@
     }
     $stmt->close();
 
-    // Variabile per memorizzare i messaggi di feedback
+    // Variabili per memorizzare i messaggi di feedback
     $feedbackSuccess = "";
     $feedbackError = "";
 
@@ -78,7 +80,7 @@
         $qta_richiesta = $_POST['quantita'];
         $id_utente = $_SESSION['id'];
 
-        // Preleva le informazioni sul materiale selezionato
+        // Preleva dal database tramite query le informazioni sul materiale selezionato
         $stmt = $conn->prepare("SELECT QUANTITA, COSTO FROM MATERIALI WHERE ID = ?");
         $stmt->bind_param("i", $id_mat); // Associa l'ID del materiale alla query
         $stmt->execute();
@@ -115,12 +117,14 @@
         $stmt->close();
     }
 ?>
-<!---->
-<main>
+
+<main><!-- Contenuto principale della pagina domanda.php. Contiene una presentazione della pagina, eventuali messaggi di errore o successo e due raggruppamenti con all'interno dei form. Un raggruppamento è dedicato ad un form che contiene il filtro di ricerca e l'altro contiene un form dove si visualizzano i materiali disponibili che puoi selezionare e acquistare.-->
     <h2>Domanda</h2>
+
+    <!-- Presentazione della pagina-->
     <p>Benvenuto nella sezione Domanda. Qui puoi visualizzare i materiali di scarto disponibili per l'acquisto, filtrare i risultati in base alla data di inserimento e procedere all'acquisto dei materiali che ti interessano. Assicurati di avere credito sufficiente per completare l'acquisto e di selezionare solo le quantità che desideri acquistare.</p>
 
-    <!-- Mostra messaggi di feedback -->
+    <!-- Mostra messaggi di feedback (errore o successo)-->
     <?php if ($feedbackSuccess) echo "<p class='successo'>$feedbackSuccess</p>"; ?>
     <?php if ($feedbackError) echo "<p class='errori'>$feedbackError</p>"; ?>
 
@@ -133,7 +137,7 @@
         </fieldset>
     </form>
 
-    <!-- Form principale per selezionare i materiali -->
+    <!-- Form per selezionare i materiali disponibili se presenti altrimenti mostra un messaggio all'utente dicendo che non è stato trovato nessun materiale-->
     <?php
     // Recupera le quantità selezionate, se presenti
     $quantita_preselezionata = isset($_POST['quantita']) ? $_POST['quantita'] : [];
