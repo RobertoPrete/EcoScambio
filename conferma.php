@@ -84,7 +84,7 @@
                 // Se il credito è insufficiente, mostra un messaggio di errore
                 echo "<p class='errori'>Credito insufficiente per completare l'acquisto.</p>";
                 // Form per tornare indietro alla pagina domanda.php con i dati delle quantità selezionate
-                echo "<form method='post' action='domanda.php'>";
+                echo "<form name='formTornaIndietro' method='post' action='domanda.php'>";
                 foreach ($quantita_selezionata as $id => $qta) { 
                     if ($qta > 0) {
                         echo "<input type='hidden' name='quantita[{$id}]' value='{$qta}'>";
@@ -94,7 +94,7 @@
                 echo "</form>";
             } else {
                 // Se il credito è sufficiente, mostra un form per concludere l'acquisto
-                echo "<form method='post' action='fine.php'>";
+                echo "<form name='formConcludiAcquisto' method='post' action='fine.php'>";
                 foreach ($riepilogo as $item) {
                     echo "<input type='hidden' name='id[]' value='{$item['id']}'>";
                     echo "<input type='hidden' name='quantita[{$item['id']}]' value='{$item['qta']}'>";
@@ -103,7 +103,7 @@
                 echo "<input type='submit' value='Concludi'>";
                 echo "</form>";
                 // Form per annullare l'acquisto e tornare alla pagina domanda.php
-                echo "<form method='post' action='domanda.php'>";
+                echo "<form name='formAnnullaAcquisto' method='post' action='domanda.php'>";
                 foreach ($quantita_selezionata as $id => $qta) { 
                     if ($qta > 0) {
                         echo "<input type='hidden' name='quantita[{$id}]' value='{$qta}'>";

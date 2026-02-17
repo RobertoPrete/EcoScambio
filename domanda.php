@@ -129,7 +129,7 @@
     <?php if ($feedbackError) echo "<p class='errori'>$feedbackError</p>"; ?>
 
     <!-- Form per filtrare i materiali in base alla data -->
-    <form method="get">
+    <form name="filtroMaterialiDomanda" method="get">
         <fieldset>
             <legend>Filtro di ricerca</legend>
             <label>Visualizza materiali dal (aaaa-mm-gg): <input type="text" name="data" value="<?= htmlspecialchars($filter_date) ?>"></label>

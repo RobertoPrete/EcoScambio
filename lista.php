@@ -71,7 +71,7 @@
     <h2>Lista materiali</h2>
 
     <!-- Form per filtrare i materiali in base al nome e alla data -->
-    <form method="get">
+    <form name="filtriMaterialiLista" method="get">
         <fieldset> <!-- raggruppamento visivo filtri di ricerca-->
             <legend>Filtri di ricerca</legend> <!-- legenda raggruppamento-->
             <label>Nome materiale: 

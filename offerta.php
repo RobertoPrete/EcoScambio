@@ -122,7 +122,7 @@
         <?php else: ?> <!-- caso in cui risultano nel database materiali aggiunti dall'azienda-->
             <!-- Form per aggiornare i materiali esistenti -->
             <?php foreach ($materiali as $mat): ?>
-                <form method="post">
+                <form name="formMaterialiEsistenti" method="post">
                     <input type="hidden" name="id" value="<?= $mat['id'] ?>">
                     <strong><?= htmlspecialchars($mat['nome']) ?></strong> (<?= $mat['data']?>)<br>
                     Descrizione: <input type="text" name="descrizione" value="<?= htmlspecialchars($mat['descr']) ?>" size="40"><br>
@@ -138,7 +138,7 @@
     <fieldset>
         <legend>Nuovo materiale</legend>
         <!-- Form per inserire un nuovo materiale -->
-        <form method="post">
+        <form name="formMaterialiNuovi" method="post">
             <input type="hidden" name="new" value="1">
             Nome: <input type="text" name="nome" required><br>
             Descrizione: <input type="text" name="descrizione" required><br>
