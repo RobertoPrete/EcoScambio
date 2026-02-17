@@ -1,0 +1,11 @@
+header.php
+home.php
+lista.php,form:filtriMaterialiLista,text:nome,text:data,submit:
+registrazione.php,form:form_registrazione,select:type,text:ragione,text:address2,text:name,text:surname,text:birthdate,text:credit,text:address,text:nick,password:password,submit:
+offerta.php,form:formMaterialiEsistenti,hidden:id,text:descrizione,text:quantita,text:costo,submit:update,form:formMaterialiNuovi,hidden:new,text:nome,text:descrizione,text:data,number:quantita,text:costo,submit:
+domanda.php,form:filtroMaterialiDomanda,submit:,form:,number:quantita_<?= $mat['id'] ?>,button:,reset:,submit:
+conferma.php,form:formTornaIndietro,hidden:quantita[{$id}],submit:,form:formConcludiAcquisto,hidden:id[],hidden:quantita[{$item['id']}],hidden:costo_totale,submit:,form:formAnnullaAcquisto,hidden:quantita[{$id}],submit:
+fine.php,form:formTornaPaginaAcquisto,submit:,form:formTornaHome,submit:
+login.php,form:login,text:user,password:pwd,checkbox:remember,submit:bottoneInvia,reset:bottoneCancella
+logout.php
+footer.php
